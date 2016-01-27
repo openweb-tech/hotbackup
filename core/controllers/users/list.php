@@ -9,15 +9,18 @@ class Page extends Controller
   public function prepare()
   {
   
-  $user = new User(1);
+  $user = new User(1, __userdb);
   if( !$user->isAuthorized() ) $this->redirect('?r=auth');
   
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   
-  $header->data['title'] = 'Simple web page';
+  $usersList = new JsonDB(__userdb);
   
+  $header->data['title'] = 'Users list';
+  
+  $this->data['usersList'] = $usersList->data;
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
@@ -27,7 +30,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'index.php', $this->data);
+  return $this->view(__templates.'users/list.php', $this->data);
   }
 }
 ?>

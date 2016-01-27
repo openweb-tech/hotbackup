@@ -16,7 +16,11 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   
-  $header->data['title'] = 'Simple web page';
+  $usersList = new JsonDB(__userdb);
+  
+  $header->data['title'] = 'Task list';
+  
+  $this->data['usersList'] = $usersList->data;
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
@@ -27,7 +31,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'index.php', $this->data);
+  return $this->view(__templates.'tasks/list.php', $this->data);
   }
 }
 ?>

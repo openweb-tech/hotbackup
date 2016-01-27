@@ -35,14 +35,10 @@ class App
   echo $page->show();//показываем страницу
   }
   
-  
   function __destruct() 
   {
-
+  
   }
-  
-  
-  
   
 }
 
