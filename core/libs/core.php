@@ -13,7 +13,7 @@ function getcurpage()
 {
 $route = getroute();
   
-if(file_exists(__controllers.$route.'.php'))
+if(file_exists(__corePath."controllers/".$route.'.php'))
   return $route;
     else
       return '404';
@@ -26,7 +26,7 @@ if(isset($_POST['action']))
   $action=str_replace('.','##',$_POST['action']);
   if($action==''){return 0;}
   
-  if(file_exists(__actions.$action.'.php'))
+  if(file_exists(__corePath."actions/".$action.'.php'))
     return $action;
       else
 	return 0;

@@ -1,7 +1,7 @@
 <?php
 
-include_once __controllers.'header.php';
-include_once __controllers.'footer.php';
+include_once __corePath.'controllers/header.php';
+include_once __corePath.'controllers/footer.php';
 
 class Page extends Controller
 { 
@@ -22,7 +22,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'404.php', $this->data);
+  return $this->view(__corePath.'views/404.php', $this->data);
   }
 }
 ?>

@@ -3,24 +3,24 @@
 include_once __corePath.'controllers/header.php';
 include_once __corePath.'controllers/footer.php';
 include_once __corePath.'controllers/topMenu.php';
+include_once __corePath.'libs/widget.php';
 
 class Page extends Controller
 { 
   public function prepare()
   {
   
-  $user = new User(1, __userdb);
+  $user = new User(1);
   if( !$user->isAuthorized() ) $this->redirect('?r=auth');
   
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   
-  $usersList = new JsonDB(__userdb);
+  $header->data['title'] = 'New MYSQL backup';
   
-  $header->data['title'] = 'Users list';
+  $this->data['widgets'] = new Widgets($this->db, __corePath.'widgets/', $this->config);
   
-  $this->data['usersList'] = $usersList->data;
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
@@ -30,7 +30,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__corePath.'views/users/list.php', $this->data);
+  return $this->view(__corePath.'views/tasks/add_mysql_backup.php', $this->data);
   }
 }
 ?>

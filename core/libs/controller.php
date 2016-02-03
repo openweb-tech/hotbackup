@@ -17,7 +17,7 @@ class Controller
   $this->curpage = $curpage;
   $this->config = $appConfig;
   $this->data = array();
-  $this->template = __templates.'index.php';
+  $this->template = __corePath.'views/index.php';
   
   }
 

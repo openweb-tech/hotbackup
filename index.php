@@ -4,17 +4,17 @@ ini_set('error_reporting', E_ALL);
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
-include 'core/libs/db.php';
-include 'core/libs/core.php';
-include 'core/libs/controller.php';
-include 'core/libs/action.php';
 include 'conf.php';
-include 'core/app.php';
-include __lang.'en.php';
+include __corePath.'libs/db.php';
+include __corePath.'libs/core.php';
+include __corePath.'libs/controller.php';
+include __corePath.'libs/action.php';
+include __corePath.'app.php';
+include __corePath.'lang/en.php';
 
 /* load plugins */
 
-foreach (glob("core/plugins/*.php") as $filename)
+foreach (glob(__corePath."plugins/*.php") as $filename)
   include $filename;
 
 /* load plugins */

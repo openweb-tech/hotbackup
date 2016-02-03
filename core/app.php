@@ -16,9 +16,9 @@ class App
   {
   $action = getaction();
   //если есть экшин- выполняем
-  if(file_exists(__actions."$action.php"))
+  if(file_exists(__corePath."actions/$action.php"))
     {
-    include __actions."$action.php";
+    include __corePath."actions/$action.php";
     $action = new action($this->db);
     $action->execute();
     }
@@ -28,7 +28,7 @@ class App
   {
   $curpage = getcurpage();
   // берём контроллер для текущей страницы
-  include __controllers."$curpage.php";
+  include __corePath."controllers/$curpage.php";
   $page = new page($curpage, $this->db, $this->config);
   $page->prepare();
   $page->render();

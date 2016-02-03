@@ -1,8 +1,8 @@
 <?php
 
-include_once __controllers.'header.php';
-include_once __controllers.'footer.php';
-include_once __controllers.'topMenu.php';
+include_once __corePath.'controllers/header.php';
+include_once __corePath.'controllers/footer.php';
+include_once __corePath.'controllers/topMenu.php';
 
 class Page extends Controller
 { 
@@ -44,7 +44,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'users/add.php', $this->data);
+  return $this->view(__corePath.'views/users/add.php', $this->data);
   }
 }
 ?>

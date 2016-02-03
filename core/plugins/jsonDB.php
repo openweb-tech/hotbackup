@@ -20,7 +20,7 @@ private $dbfile = '';
   public function loadFromFile($fn)
   {
   
-  if( !file_exists($fn) ) return 0;
+  if( !file_exists($fn) ) return $this->data = array();
   
   $this->data = json_decode( file_get_contents($fn), true );
   

@@ -11,13 +11,13 @@ class action extends actions
   
   $id = (int)$_POST['id'];
   
-  $usersDB = new JsonDB(__userdb);
+  $tasksDB = new JsonDB(__taskdb);
   
-  unset($usersDB->data[$id]);
+  unset($tasksDB->data[$id]);
   
-  $usersDB->saveToFile(__userdb);
+  $tasksDB->saveToFile(__taskdb);
   
-  $this->redirect('?r=users/list');
+  $this->redirect('?r=tasks/list');
 
   }
 }

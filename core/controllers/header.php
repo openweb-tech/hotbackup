@@ -5,7 +5,7 @@ class PageHeader extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'header.php', $this->data);
+  return $this->view(__corePath.'views/header.php', $this->data);
   }
 }
 ?>

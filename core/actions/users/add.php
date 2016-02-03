@@ -4,7 +4,6 @@ class action extends actions
 {
   public function execute()
   {
-  sleep(1);
   
   $user = new User(1);
   

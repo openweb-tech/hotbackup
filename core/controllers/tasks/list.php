@@ -1,8 +1,8 @@
 <?php
 
-include_once __controllers.'header.php';
-include_once __controllers.'footer.php';
-include_once __controllers.'topMenu.php';
+include_once __corePath.'controllers/header.php';
+include_once __corePath.'controllers/footer.php';
+include_once __corePath.'controllers/topMenu.php';
 
 class Page extends Controller
 { 
@@ -16,11 +16,11 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   
-  $usersList = new JsonDB(__userdb);
+  $tasksList = new JsonDB(__taskdb);
   
   $header->data['title'] = 'Task list';
   
-  $this->data['usersList'] = $usersList->data;
+  $this->data['tasksList'] = $tasksList->data;
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
@@ -31,7 +31,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__templates.'tasks/list.php', $this->data);
+  return $this->view(__corePath.'views/tasks/list.php', $this->data);
   }
 }
 ?>
