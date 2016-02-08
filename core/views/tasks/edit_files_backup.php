@@ -26,8 +26,8 @@
     <p><label>Title</label><br><input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" ></p>
     <p><label>Status</label><br>
       <select class="form-control" name="status">
-        <option value="1">Active</option>
-        <option value="0">Frozen</option>
+        <option value="1" class="tag_enabled">Enabled</option>
+        <option value="0" class="tag_disabled">Disabled</option>
       </select>
     </p>
     <p>
@@ -46,7 +46,7 @@
         <input type="text" name="file-filename" class="form-control" value="<?php echo $task['file-filename'] ?>">
       </p>
       <p><label>Exclude files/folders (every item on new line)</label><br>
-        <textarea name="file-exclude" class="form-control"><?php echo htmlspecialchars_decode($task['file-exclude'], ENT_QUOTES) ?>"</textarea>
+        <input type="text" name="file-exclude" class="form-control" value="<?php echo htmlspecialchars_decode($task['file-exclude'], ENT_QUOTES) ?>">
     </div>
     <!-- FILES backup -->
   </div>
@@ -60,6 +60,7 @@
 $(document).ready(function(){
 
 $('select[name="n-start"]').val('<?php echo $task['frequency']['type'] ?>');
+$('select[name="status"]').val('<?php echo $task['status'] ?>');
 
 });
 </script>

@@ -1,5 +1,12 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
+<?php 
+
+$taskStatuses = array(
+0 => 'Disabled',
+1 => 'Enabled');
+
+?>
 <div class="container">
 <h1>Tasks list</h1>
 <!-- actions menu -->
@@ -27,8 +34,9 @@
       <thead>
        <tr>
          <th>ID</th>
-         <th>Date add</th>
          <th>Title</th>
+         <th>Last exec</th>
+         <th>Next exec</th>
          <th>Type</th>
          <th>Status</th>
          <th></th>
@@ -41,10 +49,11 @@
         ?>
         <tr>
           <td><?php echo $task['id'] ?></td>
-          <td><?php echo date('d.m.Y',$task['added']) ?></td>
           <td><a href="<?php echo __siteurl ?>/?r=tasks/edit_<?php echo $task['type'] ?>&id=<?php echo $task['id'] ?>"><?php echo $task['title'] ?></a></td>
+          <td><?php echo date('d.m.Y h:i', $task['lastExec']) ?></td>
+          <td><?php echo date('d.m.Y h:i', nextExecDateTime($task)) ?></td>
           <td><?php echo $task['type'] ?></td>
-          <td><?php echo $task['status'] ?></td>
+          <td><span class="tag_<?php echo strtolower($taskStatuses[$task['status']]) ?>"><?php echo $taskStatuses[$task['status']] ?><span></td>
           <td class="align-right">
             <form method="post">
               <input type="hidden" name="action" value="tasks/delete">

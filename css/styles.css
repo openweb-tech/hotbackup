@@ -10,3 +10,13 @@ text-align: right;
 {
 margin-bottom:10px;
 }
+
+/* tags */
+.tag_enabled
+{
+color:#228f00;
+}
+.tag_disabled
+{
+color:#d9534f;
+}

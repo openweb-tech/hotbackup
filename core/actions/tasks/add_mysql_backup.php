@@ -51,7 +51,7 @@ class action extends actions
   $newTask['title'] = $_POST['title'];
   $newTask['status'] = $_POST['status'];
   $newTask['execStatus'] = 0;
-  $newTask['lastExec'] = 0;
+  $newTask['lastExec'] = time();
   $newTask['deep'] = (int)$_POST['deep'];;
   $newTask['frequency'] = $frequency;
   $newTask['mysql-backup-filename'] = $_POST['mysql-backup-filename'];

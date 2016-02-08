@@ -58,7 +58,7 @@
         <label>Minutes</label><br>
         <select class="form-control" name="n-once-minutes">
          <?php 
-         for($i=0;$i<59;$i++)
+         for($i=0;$i<60;$i+=5)
            echo "<option value='$i'>$i</option>\n";
          ?>
         </select>
@@ -92,10 +92,10 @@
         </div>
         
         <div class="col-md-4">
-        <label>Menutes</label><br>
+        <label>Minutes</label><br>
         <select class="form-control" name="n-month-minutes">
          <?php 
-         for($i=0;$i<59;$i++)
+         for($i=0;$i<60;$i+=5)
            echo "<option value='$i'>$i</option>\n";
          ?>
         </select>
@@ -119,10 +119,10 @@
         </div>
         
         <div class="col-md-6">
-        <label>Menutes</label><br>
+        <label>Minutes</label><br>
         <select class="form-control" name="n-day-minute">
          <?php 
-         for($i=0;$i<59;$i++)
+         for($i=0;$i<60;$i+=5)
            echo "<option value='$i'>$i</option>\n";
          ?>
         </select>
@@ -134,10 +134,10 @@
     
     <!-- Every every hour -->
     <div class="execTime" id="n-every-hour" style="display:none;">
-      <label>Menutes</label><br>
+      <label>Minutes</label><br>
       <select class="form-control" name="n-every-hour-minute">
        <?php 
-       for($i=0;$i<60;$i++)
+       for($i=0;$i<60;$i+=5)
          echo "<option value='$i'>$i</option>\n";
        ?>
       </select>      
@@ -146,10 +146,10 @@
     
     <!-- Every n minutes -->
     <div class="execTime" id="n-minutes">
-      <label>Menutes</label><br>
+      <label>Minutes</label><br>
       <select class="form-control" name="n-minutes-minute">
        <?php 
-       for($i=0;$i<60;$i++)
+       for($i=0;$i<60;$i+=5)
          echo "<option value='$i'>$i</option>\n";
        ?>
       </select>      

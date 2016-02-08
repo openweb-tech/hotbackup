@@ -1,6 +1,6 @@
 <?php
 
-define('__archiveDIR', '/var/www/html/archive/');
+define('__archiveDIR', '/var/www/html/backup/archive/');
 define('__corePath', '/var/www/html/backup/core/');
 define('__workfolder', '/var/www/html/backup/');
 define('__imgfolder', '/img/');

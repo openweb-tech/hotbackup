@@ -26,8 +26,8 @@
     <p><label>Title</label><br><input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" ></p>
     <p><label>Status</label><br>
       <select class="form-control" name="status">
-        <option value="1">Active</option>
-        <option value="0">Frozen</option>
+        <option value="1">Enabled</option>
+        <option value="0">Disabled</option>
       </select>
     </p>
     <p>
@@ -42,9 +42,6 @@
     
     <!-- MYSQL backup -->
     <div class="taskTypes" id="MYSQL-backup" >
-      <p><label>File name</label><br>
-        <input type="text" name="mysql-backup-filename" class="form-control" value="<?php echo $task['mysql-backup-filename'] ?>">
-      </p>
       <p><label>DB address</label><br>
         <input type="text" name="mysql-backup-address" class="form-control" value="<?php echo $task['mysql-backup-address'] ?>">
       </p>
@@ -70,6 +67,7 @@
 $(document).ready(function(){
 
 $('select[name="n-start"]').val('<?php echo $task['frequency']['type'] ?>');
+$('select[name="status"]').val('<?php echo $task['status'] ?>');
 
 });
 </script>

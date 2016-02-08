@@ -54,7 +54,6 @@ class action extends actions
   $task['title'] = $_POST['title'];
   $task['status'] = $_POST['status'];
   $task['execStatus'] = 0;
-  $task['lastExec'] = 0;
   $task['deep'] = (int)$_POST['deep'];;
   $task['frequency'] = $frequency;
   $task['file-filename'] = $_POST['file-filename'];
