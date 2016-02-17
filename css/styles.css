@@ -2,6 +2,16 @@
 {
 text-align: right;
 }
+.align-center
+{
+text-align: center;
+}
+.align-left
+{
+text-align: left;
+}
+
+
 .hiddencontrols
 {
 
@@ -19,4 +29,9 @@ color:#228f00;
 .tag_disabled
 {
 color:#d9534f;
+}
+
+.pieWidget
+{
+text-align:center;
 }

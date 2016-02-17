@@ -62,6 +62,58 @@ return __archiveDIR.$task['id'];
 }
 
 //--------------------------------------------------
+function dirSize($dir) 
+{
+$totalsize=0;
+if ($dirstream = @opendir($dir)) 
+  {
+  while (false !== ($filename = readdir($dirstream))) 
+    {
+    if ($filename!="." && $filename!="..")
+      {
+      if (is_file($dir."/".$filename))
+      $totalsize+=filesize($dir."/".$filename);
+      if (is_dir($dir."/".$filename))
+      $totalsize+=dirSize($dir."/".$filename);
+      }
+    }
+  }
+closedir($dirstream);
+return $totalsize;
+}
+
+//--------------------------------------------------
+function memryFormat($size)
+{
+$ret = $size.' b';
+
+if($size > (1024*1024*1024*1024))
+  {
+  $ret = round($size/(1024*1024*1024*1024), 1).' Tb';
+  }elseif($size > (1024*1024*1024))
+  {
+  $ret = round($size/(1024*1024*1024), 1).' Gb';
+  }elseif($size > (1024*1024))
+  {
+  $ret = round($size/(1024*1024), 1).' Mb';
+  }elseif($size > 1024) 
+  {
+  $ret = round($size/1024, 1).' Kb';
+  }
+
+return $ret;
+}
+
+
+//--------------------------------------------------
+function getMemoryUsage($task)
+{
+if(!is_dir(__archiveDIR.$task['id'])) return 0;
+
+return memryFormat(dirSize(__archiveDIR.$task['id']));
+}
+
+//--------------------------------------------------
 function delOldFiles($folder, $deep)
 {
 $filesList = array();

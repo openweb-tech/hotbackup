@@ -2,9 +2,22 @@
 <?php echo $topMenu ?>
 <div class="container">
 <h1>Home</h1>
-<p>Hello. It's a simple web page.</p>
-<p>
-<?php print_r($_SESSION) ?>
-</p>
+<div class="row">
+  <!-- 1 -->
+  <div class="col-md-4 align-center">
+    <?php echo $hddUsage ?>
+  </div>
+  <!-- 2 -->
+  <div class="col-md-4">
+    <?php echo $backUpsUsage ?>
+  </div>
+  <!-- 3 -->
+  <div class="col-md-4">
+  
+  
+  </div>
+
+</div>
+
 </div>
 <?php echo $footer ?>

@@ -10,5 +10,6 @@
 <link rel="stylesheet" href="<?php echo __siteurl ?>/css/styles.css" type="text/css" media="screen" />
 <script src="<?php echo __siteurl ?>/js/jquery-2.2.0.min.js"></script>
 <script src="<?php echo __siteurl ?>/js/bootstrap.min.js"></script>
+<script src="<?php echo __siteurl ?>/js/Chart.js"></script>
 </head>
 <body>
