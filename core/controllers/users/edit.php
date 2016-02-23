@@ -33,7 +33,7 @@ class Page extends Controller
   
   $this->data['id'] = $id;
   
-  if( !empty($_SESSION['formSent']) )
+  if( isset($_SESSION['formSent']) && !empty($_SESSION['formSent']))
     {
     $formsent = $_SESSION['formSent'];
     if( isset($formsent['login']) ) $user['login'] = $formsent['login'];

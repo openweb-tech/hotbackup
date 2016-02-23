@@ -6,6 +6,7 @@
       <a class="navbar-brand" href="<?php echo __siteurl ?>/?r=tasks/list">Tasks</a>
       <a class="navbar-brand" href="<?php echo __siteurl ?>/?r=users/list">Users</a>
       <a class="navbar-brand" href="<?php echo __siteurl ?>/?r=settings/main">Settings</a>
+      <a class="navbar-brand" href="<?php echo __siteurl ?>/?r=settings/servers">Servers</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">

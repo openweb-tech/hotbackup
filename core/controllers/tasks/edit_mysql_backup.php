@@ -31,7 +31,7 @@ class Page extends Controller
   
   $formsent = $tasksList->data[$id];
   
-  if( !empty($_SESSION['formSent']) )
+  if( isset($_SESSION['formSent']) && !empty($_SESSION['formSent']))
     $formsent = $_SESSION['formSent'];
   
   $_SESSION['formSent'] = array();

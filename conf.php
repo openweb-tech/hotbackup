@@ -11,6 +11,7 @@ define('__salt', '98w3onfklsdjhbkugdf');
 define('__userdb', '/var/www/html/backup/core/data/users.json');
 define('__taskdb', '/var/www/html/backup/core/data/tasks.json');
 define('__settingsdb', '/var/www/html/backup/core/data/settings.json');
+define('__serversdb', '/var/www/html/backup/core/data/servers.json');
 
 $dbconf['usedb'] = 0;
 $dbconf['dbuser'] = '';

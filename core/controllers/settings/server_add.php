@@ -6,34 +6,27 @@ include_once __corePath.'controllers/topMenu.php';
 
 class Page extends Controller
 { 
+  
   public function prepare()
   {
   
-  $user = new User(1, __userdb);
+  $user = new User(1);
   if( !$user->isAuthorized() ) $this->redirect('?r=auth');
   
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
-  
-  $usersList = new JsonDB(__userdb);
-  
-  $header->data['title'] = 'Users list';
+  $header->data['title'] = 'Connect to the server';
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
   
-  
-  if( isset($_SESSION['formSent']) && !empty($_SESSION['formSent']))
+  if( isset($_SESSION['formSent'] && !empty($_SESSION['formSent']) )
     $formsent = $_SESSION['formSent'];
   
-  if( !isset($formsent['login'] )) $formsent['login'] = '';
-  if( !isset($formsent['email'] )) $formsent['email'] = '';
-  if( !isset($formsent['password1'] )) $formsent['password1'] = '';
-  if( !isset($formsent['password2'] )) $formsent['password2'] = '';
-  if( !isset($formsent['accessGroup'] )) $formsent['accessGroup'] = '';
-  if( !isset($formsent['alerts'] )) $formsent['alerts'] = '';
+  if( !isset($formsent['address'] )) $formsent['address'] = '';
+  if( !isset($formsent['apiKey'] )) $formsent['apiKey'] = '';
       
   $this->data['formSent'] = $formsent;
   
@@ -44,7 +37,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__corePath.'views/users/add.php', $this->data);
+  return $this->view(__corePath.'views/settings/server_add.php', $this->data);
   }
 }
 ?>

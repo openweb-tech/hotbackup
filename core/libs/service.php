@@ -77,8 +77,9 @@ if ($dirstream = @opendir($dir))
       $totalsize+=dirSize($dir."/".$filename);
       }
     }
+  closedir($dirstream);
   }
-closedir($dirstream);
+
 return $totalsize;
 }
 
