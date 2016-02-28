@@ -47,7 +47,7 @@ class Page extends Controller
   $usedByAllBackups = 0;
   foreach($tasksList->data as $task)
     {
-    $size = round(dirSize(__archiveDIR.$task['id'])/(1024*1024));
+    $size = round(dirSize(__archiveDIR.'local/'.$task['id'])/(1024*1024));
     $usedByAllBackups += $size;
     
     $color = $this->getColor();
@@ -59,7 +59,7 @@ class Page extends Controller
     }
   
   
-  $usedByBackupsTmp = dirSize(__archiveDIR);
+  $usedByBackupsTmp = dirSize(__archiveDIR.'local/');
   $usedByBackups = round($usedByBackupsTmp/(1024*1024));
   $hddTotalSize = round(disk_total_space(__workfolder)/(1024*1024));
   $hddFreeSpace = round(disk_free_space (__workfolder)/(1024*1024));

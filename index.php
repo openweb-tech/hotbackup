@@ -10,6 +10,7 @@ include __corePath.'libs/core.php';
 include __corePath.'libs/controller.php';
 include __corePath.'libs/action.php';
 include __corePath.'libs/service.php';
+include __corePath.'libs/jsonDB.php';
 include __corePath.'app.php';
 include __corePath.'lang/en.php';
 

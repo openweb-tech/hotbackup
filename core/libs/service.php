@@ -1,20 +1,20 @@
 <?php
 
 // Check the multiprocess lock
-function checkLock()
+function checkLock($name)
 {
-return file_exists(__workfolder.".lock");
+return file_exists(__workfolder.".".$name."lock");
 }
 
 // Save the .lock file to the work folder to prevent multi process execution
-function lock()
+function lock($name)
 {
-return file_put_contents(__workfolder.".lock", getmypid());
+return file_put_contents(__workfolder.".".$name."lock", getmypid());
 }
 
-function unLock()
+function unLock($name)
 {
-unlink(__workfolder.".lock");
+unlink(__workfolder.".".$name."lock");
 }
 
 //--------------------------------------------------
@@ -54,11 +54,36 @@ return $res;
 //--------------------------------------------------
 function getTaskFolder($task)
 {
-if(!is_dir(__archiveDIR.$task['id']))
-  if(!mkdir(__archiveDIR.$task['id']))
+if(!is_dir(__archiveDIR.'local/'.$task['id']))
+  if(!mkdir(__archiveDIR.'local/'.$task['id']))
     return '';
 
-return __archiveDIR.$task['id'];
+return __archiveDIR.'local/'.$task['id'];
+}
+
+function getServersTaskFolder($serverid, $task)
+{
+if(!is_dir(__archiveDIR.'servers/'.$serverid.'/'.$task['id']))
+  if(!mkdir(__archiveDIR.'servers/'.$serverid.'/'.$task['id']))
+    return '';
+
+return __archiveDIR.'servers/'.$serverid.'/'.$task['id'];
+}
+
+function getServerFolder($task)
+{
+if(!is_dir(__archiveDIR.'servers/'.$task['id']))
+  if(!mkdir(__archiveDIR.'servers/'.$task['id']))
+    return '';
+
+return __archiveDIR.'local/'.$task['id'];
+}
+
+function checkArchFile($dir, $file)
+{
+if(!file_exists($dir.'/'.$file['name'])) return false;
+if(filesize($dir.'/'.$file['name']) != $file['size']) return false;
+return true;
 }
 
 //--------------------------------------------------
@@ -109,9 +134,9 @@ return $ret;
 //--------------------------------------------------
 function getMemoryUsage($task)
 {
-if(!is_dir(__archiveDIR.$task['id'])) return 0;
+if(!is_dir(__archiveDIR.'local/'.$task['id'])) return 0;
 
-return memryFormat(dirSize(__archiveDIR.$task['id']));
+return memryFormat(dirSize(__archiveDIR.'local/'.$task['id']));
 }
 
 //--------------------------------------------------
@@ -188,6 +213,15 @@ unlink("$archFolder/$fileName.sql");
 delOldFiles($archFolder, $task['deep']);
 
 return 'Ok';
+}
+
+function checkServerTestTime($server, $timeout)
+{
+$interval = time() - $server['lastCheck'];
+
+if($interval >= $timeout) return 1;
+
+return 0;
 }
 
 ?>
