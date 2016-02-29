@@ -1,7 +1,7 @@
 <?php
 echo "Servers Service started [".date('d.m.Y h:i', time())."] with PID= ".getmypid()."\n";
 
-include 'conf.php';
+include $_SERVER['PWD'].'/conf.php';
 include __corePath.'libs/service.php';
 include __corePath.'libs/ApiQuery.php';
 include __corePath.'libs/jsonDB.php';
@@ -12,13 +12,11 @@ lock('servers');
 $serversList = new JsonDB(__serversdb);
 
 foreach($serversList->data as $key => $server)
-  //if(checkServerTestTime($server, 60)) 
+  if(checkServerTestTime($server, 60)) 
     {
     $query = new ApiQuery($server['address'], $server['apiKey']);
     
     $info = $query->getServerInfo();
-    
-    print_r($info);
     
     if($info->responseStatus != 'Unathorized')
       {
@@ -28,14 +26,9 @@ foreach($serversList->data as $key => $server)
       $serversList->data[$key]['lastCheck'] = time();
       $serversList->data[$key]['status'] = 1;
       
-      echo ">>> ".$server['archSync']." <<<\n";
-      
       if($server['archSync'])
         {
         $tasksfiles = $query->getTasksFiles(true);
-        echo "\n*************************\n";
-        print_r($tasksfiles);
-        echo "\n*************************\n";
         // ----------------------------------
         foreach($tasksfiles as $taskId => $files)
           {
@@ -47,6 +40,7 @@ foreach($serversList->data as $key => $server)
               if($fileData)
                 file_put_contents($folder.$file['name'], $fileData);
               }
+          deleteOldFiles($folder, $files);
           }        
         // ----------------------------------
         }

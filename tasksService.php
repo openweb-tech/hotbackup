@@ -1,7 +1,7 @@
 <?php
 echo "Service started [".date('d.m.Y h:i', time())."] with PID= ".getmypid()."\n";
 
-include 'conf.php';
+include $_SERVER['PWD'].'/conf.php';
 include __corePath.'libs/service.php';
 include __corePath.'libs/jsonDB.php';
 

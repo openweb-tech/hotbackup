@@ -130,6 +130,26 @@ if($size > (1024*1024*1024*1024))
 return $ret;
 }
 
+function checkFile($folder, $files, $file)
+{
+$fname = str_replace($folder, '', $file);
+$tr = false;
+
+foreach($files as $fn)
+  if($fn['name'] == $fname)
+    $tr = true;
+
+return $tr;
+}
+
+function deleteOldFiles($folder, $files)
+{
+$folderFiles = glob($folder.'*');
+
+foreach($folderFiles as $folderFile)
+  if( !checkFile($folder, $files, $folderFile) )
+    unlink($folderFile);
+}
 
 //--------------------------------------------------
 function getMemoryUsage($task)
