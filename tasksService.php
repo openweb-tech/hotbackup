@@ -1,9 +1,14 @@
 <?php
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+
 echo "Service started [".date('d.m.Y h:i', time())."] with PID= ".getmypid()."\n";
 
-include $_SERVER['PWD'].'/conf.php';
+include __DIR__.'/conf.php';
 include __corePath.'libs/service.php';
 include __corePath.'libs/jsonDB.php';
+include __corePath.'libs/dumper.php';
 
 if( checkLock('tasks') ) die("Found .lock file, exit.\n");
 lock('tasks');

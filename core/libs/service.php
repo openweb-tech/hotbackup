@@ -186,6 +186,64 @@ foreach($filesList as $fileName)
 return 1;
 }
 
+function addLastSlash($path)
+{
+$symbol = substr($path, strlen($path)-1, 1);
+if($symbol != '/') return $path.'/';
+return $path;
+}
+
+function getStructFiles($folder)
+{
+$struct = glob(addLastSlash($folder)."*");
+
+$res = array();
+
+foreach($struct as $key => $item)
+  if(is_dir($item))
+    {
+    $res = array_merge($res, getStructFiles($item));
+    } else {
+    $res[] = $item;
+    }
+
+return $res;
+}
+
+function getStructFolders($folder)
+{
+$struct = glob(addLastSlash($folder)."*");
+
+$res = array();
+
+foreach($struct as $key => $item)
+  if(is_dir($item))
+    {
+    $res[] = $item;
+    $res = array_merge($res, getStructFolders($item));
+    } 
+
+return $res;
+}
+
+function exCheckItem($item, $excludeArray)
+{
+foreach($excludeArray as $exItem)
+  if(strpos('---'.$item, trim($exItem)))
+    return false;
+return true;
+}
+
+function excludeFiles($filesArray, $excludeArray)
+{
+$tmpArray = array();
+foreach($filesArray as $key => $item)
+  {
+  if(exCheckItem($item, $excludeArray))
+    $tmpArray[] = $item;
+  }
+return $tmpArray;
+}
 
 //--------------------------------------------------
 function filesBackup($task)
@@ -193,18 +251,38 @@ function filesBackup($task)
 echo "Files backup with taskID = ".$task['id']."\n";
 
 $archFolder = getTaskFolder($task);
-
+$target = $task['file-filename'];
 if($archFolder == '')return 'Error';
-
 $fileName = $archFolder."/".date('Y-m-d*h:i', time()).".tar.gz";
 
-$exclude = '';
-if($task['file-exclude']!='')$exclude = ' --exclude '.$task['file-exclude'];
+$zip = new ZipArchive();
+$zip->open($fileName, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
-$target = $task['file-filename'];
+$exclude = explode("\n", $task['file-exclude']);
+if(!$exclude[0]) $exclude = array();
 
-$execString = "tar -czvf $fileName $exclude $target";
-$output = shell_exec($execString);
+if(is_file($target))// Archiving only 1 file
+  {
+  $zip->addFile($target, basename($target));
+  } else { // Archiving folder
+  $files = excludeFiles(getStructFiles($target), $exclude);
+  
+  $folders = excludeFiles(getStructFolders($target), $exclude);
+  
+  foreach($folders as $folder)
+    {
+    $zip->addEmptyDir(str_replace(addLastSlash($target), '', $folder) );
+    }
+  
+  foreach($files as $file)
+    {
+    $zip->addFile($file, str_replace(addLastSlash($target), '', $file));
+    }
+  echo "Num files = ".$zip->numFiles."\n";
+  echo "Status = ".$zip->status. "\n";
+  }
+
+$zip->close();
 
 delOldFiles($archFolder, $task['deep']);
 
@@ -222,13 +300,16 @@ if($archFolder == '')return 'Error';
 
 $fileName = date('Y-m-d*h:i', time());
 
-$execString = "mysqldump -f -h ".$task['mysql-backup-address']." -u ".$task['mysql-backup-user']." -p".$task['mysql-backup-password']." ".$task['mysql-backup-name']." > $archFolder/$fileName.sql";
-$output = shell_exec($execString);
+$world_dumper = Shuttle_Dumper::create(array(
+	'host' => $task['mysql-backup-address'],
+	'username' => $task['mysql-backup-user'],
+	'password' => $task['mysql-backup-password'],
+	'db_name' => $task['mysql-backup-name'],
+));
 
-$execString = "tar -czvf $archFolder/$fileName.tar.gz $archFolder/$fileName.sql";
-$output = shell_exec($execString);
+echo "$archFolder/$fileName.sql.gz\n";
 
-unlink("$archFolder/$fileName.sql");
+$world_dumper->dump("$archFolder/$fileName.sql.gz");
 
 delOldFiles($archFolder, $task['deep']);
 

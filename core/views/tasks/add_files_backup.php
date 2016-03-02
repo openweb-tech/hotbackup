@@ -46,7 +46,7 @@
         <input type="text" name="file-filename" class="form-control">
       </p>
       <p><label>Exclude files/folders (every item on new line)</label><br>
-        <input type="text" name="file-exclude" class="form-control">
+        <textarea name="file-exclude" class="form-control" style="height:240px;"></textarea>
       </p>
     </div>
     <!-- FILES backup -->

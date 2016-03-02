@@ -46,7 +46,7 @@
         <input type="text" name="file-filename" class="form-control" value="<?php echo $task['file-filename'] ?>">
       </p>
       <p><label>Exclude files/folders (every item on new line)</label><br>
-        <input type="text" name="file-exclude" class="form-control" value="<?php echo htmlspecialchars_decode($task['file-exclude'], ENT_QUOTES) ?>">
+        <textarea name="file-exclude" class="form-control" style="height:240px;"><?php echo htmlspecialchars_decode($task['file-exclude'], ENT_QUOTES) ?></textarea>
     </div>
     <!-- FILES backup -->
   </div>
