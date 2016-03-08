@@ -40,7 +40,13 @@ switch($task['frequency']['type'])
   break;
   
   case 'n-day':
-    $res = mktime($task['frequency']['n-day-hour'], $task['frequency']['n-day-minute'], 0, date('n', $curTime), date('j', $curTime), date('Y', $curTime));
+    $lastExec = $task['lastExec'] + (60*60*24);
+    $res = mktime($task['frequency']['n-day-hour'], $task['frequency']['n-day-minute'], 0, date('n', $lastExec), date('j', $lastExec), date('Y', $lastExec));
+  break;
+  
+  case 'n-days':
+    //$lastExec = $task['lastExec'] + (60*60*24);
+    //$res = mktime($task['frequency']['n-day-hour'], $task['frequency']['n-day-minute'], 0, date('n', //$lastExec), date('j', $lastExec), date('Y', $lastExec));
   break;
   
   case 'n-month':
