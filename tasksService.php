@@ -30,14 +30,34 @@ foreach($tasksList->data as $key=>$task)
     switch($task['type'])
       {
       case 'files_backup':
-        $res = filesBackup($task);
+        $res = 0;
+        $tasksList->data[$key]['execStatus'] = 0;
+        try 
+          {
+          $res = filesBackup($task);
+          }
+        catch(Exception $e)
+          {
+          echo $e->getMessage()."\n";
+          $tasksList->data[$key]['execStatus'] = 2;
+          }
         echo "$res \n";
         if($res == 'Ok')
           $tasksList->data[$key]['lastExec'] = time();
       break;
       
       case 'mysql_backup':
-        $res = mysqlBackup($task);
+        $res = 0;
+        $tasksList->data[$key]['execStatus'] = 0;
+        try
+          {
+          $res = mysqlBackup($task);
+          }
+        catch(Exception $e)
+          {
+          echo $e->getMessage()."\n";
+          $tasksList->data[$key]['execStatus'] = 2;
+          }
         echo "$res \n";
         if($res == 'Ok')
           $tasksList->data[$key]['lastExec'] = time();

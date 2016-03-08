@@ -28,7 +28,11 @@ color:#228f00;
 }
 .tag_disabled
 {
-color:#d9534f;
+color:#8d8d8d;
+}
+.tag_error
+{
+color:#ff1b1b;
 }
 
 .pieWidget

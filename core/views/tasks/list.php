@@ -4,7 +4,8 @@
 
 $taskStatuses = array(
 0 => 'Disabled',
-1 => 'Enabled');
+1 => 'Enabled',
+2 => 'Error');
 
 ?>
 <div class="container">
@@ -47,6 +48,9 @@ $taskStatuses = array(
       <?php 
       foreach($tasksList as $key=>$task)
         {
+        if($task['execStatus']) $status = $task['execStatus'];
+          else
+            $status = $task['status'];
         ?>
         <tr>
           <td><?php echo $task['id'] ?></td>
@@ -55,7 +59,7 @@ $taskStatuses = array(
           <td><?php echo date('d.m.Y h:i', nextExecDateTime($task)) ?></td>
           <td><?php echo getMemoryUsage($task) ?></td>
           <td><?php echo $task['type'] ?></td>
-          <td><span class="tag_<?php echo strtolower($taskStatuses[$task['status']]) ?>"><?php echo $taskStatuses[$task['status']] ?><span></td>
+          <td><span class="tag_<?php echo strtolower($taskStatuses[$status]) ?>"><?php echo $taskStatuses[$status] ?><span></td>
           <td class="align-right">
             <form method="post">
               <input type="hidden" name="action" value="tasks/delete">
