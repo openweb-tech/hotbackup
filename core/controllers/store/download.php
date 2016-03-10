@@ -11,9 +11,20 @@ class Page extends Controller
   $fileName = str_replace('/', '', $_GET['fileName']);
   $folder = str_replace('.', '', $_GET['folder']);
   $taskId = str_replace('.', '', $_GET['taskId']);
-
-  $path = __archiveDIR."$folder/$taskId/$fileName";
+  $serverId = '';
+  if(isset($_GET['serverId'])) $serverId = (int)$_GET['serverId'];
   
+  switch($folder)
+    {
+    case 'local':
+      $path = __archiveDIR."local/$taskId/$fileName";
+      break;
+      
+    case 'remote':
+      $path = __archiveDIR."servers/$serverId/$taskId/$fileName";
+      break;
+    }
+  //echo $path;
   if(file_exists($path))
     {
     header('Content-Description: File Transfer');

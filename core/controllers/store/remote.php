@@ -6,18 +6,18 @@ include_once __corePath.'controllers/topMenu.php';
 
 class Page extends Controller
 { 
-  private function getLocalFolder()
+  private function getRemoteFolder()
   {
   $res = array();
-  $tasksList = new JsonDB(__taskdb);
+  $serversList = new JsonDB(__serversdb);
   
-  foreach(glob(__archiveDIR.'local/*') as $path)
+  foreach(glob(__archiveDIR.'servers/*') as $path)
     if(is_dir($path))
       {
-      $id = str_replace(__archiveDIR.'local/', '', $path);
+      $id = str_replace(__archiveDIR.'servers/', '', $path);
       $name = 'Undefined';
-      if(isset($tasksList->data[$id]))
-        $name = $tasksList->data[$id]['title'];
+      if(isset($serversList->data[$id]))
+        $name = $serversList->data[$id]['name'];
       
       $res[$id] = array('id' => $id,
         'name' => $name,
@@ -39,9 +39,10 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
-  $header->data['title'] = 'Store / local';
+  $header->data['title'] = 'Store / remote';
   
-  $this->data['folders'] = $this->getLocalFolder();
+  $this->data['servers'] = $this->getRemoteFolder();
+  
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
@@ -49,7 +50,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__corePath.'views/store/local.php', $this->data);
+  return $this->view(__corePath.'views/store/remote.php', $this->data);
   }
 }
 ?>

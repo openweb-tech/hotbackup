@@ -25,11 +25,9 @@ class action extends actions
     case 'remote':
       $path = __archiveDIR."servers/$server/$taskId/$fileName";
       unlink($path);
-      //$this->redirect("?r=store/remote/folder&id=1456906044");
+      $this->redirect("?r=store/remote/folder&fid=$taskId&sid=$server");
         break;
     }
-
-  
   }
 }
 

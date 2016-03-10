@@ -37,11 +37,17 @@ class Page extends Controller
   
   $id = (int)$_GET['id'];
   
-  if(!isset($tasksList->data[$id])) die('Error');
+  if(isset($tasksList->data[$id]))
+    {
+    $this->data['taskTitle'] = $tasksList->data[$id]['title'];
+    $header->data['title'] = 'Store / local / '.$tasksList->data[$id]['title'];
+    }
+    else
+    {
+    $this->data['taskTitle'] = 'undefined';
+    $header->data['title'] = 'Store / local / undefined';
+    }
   
-  $header->data['title'] = 'Store / local / '.$tasksList->data[$id]['title'];
-  
-  $this->data['taskTitle'] = $tasksList->data[$id]['title'];
   $this->data['files'] = $this->getlFolderFiles();
   $this->data['taskId'] = $id;
   $this->data['header'] = $header->show();
