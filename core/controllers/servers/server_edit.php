@@ -34,6 +34,7 @@ class Page extends Controller
   if( !isset($formsent['address'] )) $formsent['address'] = '';
   if( !isset($formsent['apiKey'] )) $formsent['apiKey'] = '';
   if( !isset($formsent['archSync'] )) $formsent['archSync'] = '';
+  if( !isset($formsent['archDepth'] )) $formsent['archDepth'] = '';
       
   $this->data['formSent'] = $formsent;
   

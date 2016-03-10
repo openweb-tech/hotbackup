@@ -31,7 +31,7 @@
       </select>
     </p>
     <p>
-      <label>Archiving depth</label><br>
+      <label>Archive depth</label><br>
       <input  type="number" class="form-control" name="deep" value="<?php echo $task['deep']  ?>">
     </p>
     <?php echo $widgets->show('DateTimePicker', array('frequency' => $task['frequency'] )); ?>

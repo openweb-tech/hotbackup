@@ -67,13 +67,18 @@ if(!is_dir(__archiveDIR.'local/'.$task['id']))
 return __archiveDIR.'local/'.$task['id'];
 }
 
-function getServersTaskFolder($serverid, $task)
+function getServersTaskFolder($serverid, $taskId)
 {
-if(!is_dir(__archiveDIR.'servers/'.$serverid.'/'.$task['id']))
-  if(!mkdir(__archiveDIR.'servers/'.$serverid.'/'.$task['id']))
-    return '';
+if(!is_dir(__archiveDIR.'servers/'.$serverid))
+  mkdir(__archiveDIR.'servers/'.$serverid);
+  
+if(!is_dir(__archiveDIR.'servers/'.$serverid.'/'.$taskId))
+  mkdir(__archiveDIR.'servers/'.$serverid.'/'.$taskId);
+  
+if(!is_dir(__archiveDIR.'servers/'.$serverid.'/'.$taskId))
+  return '';
 
-return __archiveDIR.'servers/'.$serverid.'/'.$task['id'];
+return __archiveDIR.'servers/'.$serverid.'/'.$taskId;
 }
 
 function getServerFolder($task)
@@ -146,15 +151,6 @@ foreach($files as $fn)
     $tr = true;
 
 return $tr;
-}
-
-function deleteOldFiles($folder, $files)
-{
-$folderFiles = glob($folder.'*');
-
-foreach($folderFiles as $folderFile)
-  if( !checkFile($folder, $files, $folderFile) )
-    unlink($folderFile);
 }
 
 //--------------------------------------------------

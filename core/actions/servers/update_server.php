@@ -16,6 +16,7 @@ class action extends actions
   $serversDB->data[$id]['address'] = $_POST['address'];
   $serversDB->data[$id]['apiKey'] = $_POST['apiKey'];
   $serversDB->data[$id]['archSync'] = $_POST['archSync'];
+  $serversDB->data[$id]['archDepth'] = $_POST['depth'];
   
   $serversDB->saveToFile(__serversdb);
   

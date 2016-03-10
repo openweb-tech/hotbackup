@@ -25,11 +25,14 @@
   <div class="col-md-6">
     <p><label>Address</label><br><input type="text" class="form-control" name="address" value="<?php echo $formSent['address'] ?>" placeholder="http://www.your-server.com/backup"></p>
     <p><label>Api key</label><br><input type="text" class="form-control" name="apiKey" value="<?php echo $formSent['apiKey'] ?>" ></p>
-    <p><label>Synchronize archive</label><br>
+    <p><label>Download archives</label><br>
       <select class="form-control" name="archSync">
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
+    </p>
+    <p><label>Archive depth</label><br>
+      <input  type="number" class="form-control" name="depth" value="<?php echo $formSent['archDepth']  ?>">
     </p>
   </div>
   

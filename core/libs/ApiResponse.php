@@ -90,6 +90,7 @@ class ApiResponse
   $result['documentRoot'] = $_SERVER['DOCUMENT_ROOT'];
   $result['freeSpace'] = disk_free_space(getcwd());
   $result['tasksCount'] = count($tasks->data);
+  $result['tasks'] = $tasks->data;
   $result['responseStatus'] = 'ok';
   
   return $result;

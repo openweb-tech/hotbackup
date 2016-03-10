@@ -2,13 +2,14 @@
 
 class action extends actions
 {
-  public function newServer($address, $apiKey, $archSync)
+  public function newServer($address, $apiKey, $archSync, $archDepth)
   {
   $server = array();
   
   $server['address'] = $address;
   $server['apiKey'] = $apiKey;
   $server['archSync'] = $archSync;
+  $server['archDepth'] = $archDepth;
   $server['name'] = '';
   $server['lastCheck'] = 0;
   $server['status'] = 0;
@@ -27,8 +28,9 @@ class action extends actions
   $address = $_POST['address'];
   $apiKey = $_POST['apiKey'];
   $archSync = $_POST['archSync'];
+  $archDepth = $_POST['depth'];
   
-  $newServer = $this->newServer($address, $apiKey, $archSync);
+  $newServer = $this->newServer($address, $apiKey, $archSync, $archDepth);
   
   $serversDB = new JsonDB(__serversdb);
   
