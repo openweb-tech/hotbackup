@@ -39,3 +39,28 @@ color:#ff1b1b;
 {
 text-align:center;
 }
+
+/* folder object */
+.folder
+{
+display:inline-block;
+text-decoration:none;
+color:#000;
+width:100px;
+height:100px;
+}
+.folder > div
+{
+width:100px;
+height:100px;
+position:relative;
+background:url('../img/folder-icon.png')no-repeat center center;
+background-size:cover;
+}
+.folder > div > div
+{
+position:absolute;
+top:50px;
+text-align:center;
+width:100%;
+}
