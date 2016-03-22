@@ -27,6 +27,8 @@ class Page extends Controller
   
   $tasksList = $query->getTasksList(true);
   
+  //print_r($tasksList);
+  
   $header->data['title'] = $server['name'].': tasks list ';
   $this->data['server'] = $server;
   $this->data['tasksList'] = $tasksList;  

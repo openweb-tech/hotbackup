@@ -56,7 +56,6 @@ class action extends actions
   $task['execStatus'] = 0;
   $task['deep'] = (int)$_POST['deep'];
   $task['frequency'] = $frequency;
-  $task['mysql-backup-filename'] = $_POST['mysql-backup-filename'];
   $task['mysql-backup-address'] = $_POST['mysql-backup-address'];
   $task['mysql-backup-name'] = $_POST['mysql-backup-name'];
   $task['mysql-backup-user'] = $_POST['mysql-backup-user'];

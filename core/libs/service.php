@@ -120,7 +120,7 @@ return $totalsize;
 }
 
 //--------------------------------------------------
-function memryFormat($size)
+function memoryFormat($size)
 {
 $ret = $size.' b';
 
@@ -158,7 +158,7 @@ function getMemoryUsage($task)
 {
 if(!is_dir(__archiveDIR.'local/'.$task['id'])) return 0;
 
-return memryFormat(dirSize(__archiveDIR.'local/'.$task['id']));
+return memoryFormat(dirSize(__archiveDIR.'local/'.$task['id']));
 }
 
 //--------------------------------------------------

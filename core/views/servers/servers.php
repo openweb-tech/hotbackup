@@ -58,7 +58,7 @@ return '<img src="'.__siteurl.'/img/jx-loader-line.gif" />';
           <td><?php echo genServerTitle($server) ?></td>
           <td><?php echo $server['address'] ?></td>
           <td><?php echo getServerStatus($server['status']) ?></td>
-          <td><?php echo memryFormat($server['freeSpace']) ?></td>
+          <td><?php echo memoryFormat($server['freeSpace']) ?></td>
           <td><?php echo $server['tasksCount'] ?></td>
           <td class="align-right"><a href="<?php echo __siteurl ?>/?r=servers/server_edit&id=<?php echo $server['id'] ?>" class="btn btn-xs btn-info">connection</a></td>
           <td class="align-right">

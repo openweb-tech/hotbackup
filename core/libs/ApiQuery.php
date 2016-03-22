@@ -54,7 +54,7 @@ class ApiQuery
   
   foreach($params as $key=>$val)
     $query.="$key=$val&";
-    
+  
   return $this->httpPath.'?'.$query;
   }
   

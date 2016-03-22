@@ -45,7 +45,8 @@ $taskStatuses = array(
       </thead>
       <tbody>
       <?php 
-      foreach($tasksList as $key=>$task)
+      //print_r($tasksList);
+      foreach($tasksList as $key => $task)
         {
         ?>
         <tr>
@@ -53,7 +54,7 @@ $taskStatuses = array(
           <td><a href="<?php echo __siteurl ?>/?r=tasks/edit_<?php echo $task['type'] ?>&id=<?php echo $task['id'] ?>"><?php echo $task['title'] ?></a></td>
           <td><?php echo date('d.m.Y h:i', $task['lastExec']) ?></td>
           <td><?php echo date('d.m.Y h:i', nextExecDateTime($task)) ?></td>
-          <td><?php echo getMemoryUsage($task) ?></td>
+          <td><?php echo memoryFormat($task['memoryUsage']) ?></td>
           <td><?php echo $task['type'] ?></td>
           <td><span class="tag_<?php echo strtolower($taskStatuses[$task['status']]) ?>"><?php echo $taskStatuses[$task['status']] ?><span></td>
           <td class="align-right">

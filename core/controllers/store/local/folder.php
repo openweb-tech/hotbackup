@@ -16,7 +16,7 @@ class Page extends Controller
     $res[] = array('id' => $id,
       'name' => $name,
       'size' => filesize($path),
-      'time' => filectime($path)
+      'time' => filemtime($path)
       );
     }
 

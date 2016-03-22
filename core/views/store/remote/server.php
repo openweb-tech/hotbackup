@@ -23,7 +23,7 @@
         <tr>
           <td><?php echo ($id+1) ?></td>
           <td><a href="<?php echo __siteurl ?>/?r=store/remote/folder&fid=<?php echo $folder['id'] ?>&sid=<?php echo (int)$_GET['id'] ?>"><?php echo $folder['name'] ?></a></td>
-          <td><?php echo memryFormat($folder['size']) ?></td>
+          <td><?php echo memoryFormat($folder['size']) ?></td>
           <td><?php echo $folder['filesCount'] ?></td>
           <td><?php echo date('d.m.Y h:i', $folder['time']) ?></td>
           <td></td>        

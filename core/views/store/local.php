@@ -23,7 +23,7 @@
         <tr>
           <td><a href="<?php echo __siteurl ?>/?r=store/local/folder&id=<?php echo $id ?>"><?php echo $id ?></a></td>
           <td><a href="<?php echo __siteurl ?>/?r=store/local/folder&id=<?php echo $id ?>"><?php echo $folder['name'] ?></a></td>
-          <td><?php echo memryFormat($folder['size']) ?></td>
+          <td><?php echo memoryFormat($folder['size']) ?></td>
           <td><?php echo $folder['filesCount'] ?></td>
           <td><?php echo date('d.m.Y h:i', $folder['time']) ?></td>
           <td></td>        

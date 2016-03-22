@@ -23,7 +23,7 @@
         <tr>
           <td><a href="<?php echo __siteurl ?>/?r=store/remote/server&id=<?php echo $id ?>"><?php echo $id ?></a></td>
           <td><a href="<?php echo __siteurl ?>/?r=store/remote/server&id=<?php echo $id ?>"><?php echo $server['name'] ?></a></td>
-          <td><?php echo memryFormat($server['size']) ?></td>
+          <td><?php echo memoryFormat($server['size']) ?></td>
           <td><?php echo $server['filesCount'] ?></td>
           <td><?php echo date('d.m.Y h:i', $server['time']) ?></td>
           <td></td>        

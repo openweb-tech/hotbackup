@@ -1,9 +1,10 @@
-<?php 
+<?php
+
+include __corePath.'libs/service.php';
 
 class ApiResponse
 {
   private $settings;
-  
   
   function __construct($settingsdb, $serversdb, $taskdb, $userdb) 
   {
@@ -77,6 +78,9 @@ class ApiResponse
   {
   $tasks = new JsonDB($this->taskdb);
   
+  foreach($tasks->data as $key => $task)
+    $tasks->data[$key]['memoryUsage'] = dirSize(__archiveDIR.'local/'.$task['id']);
+  
   return $tasks->data;
   }
   
@@ -90,7 +94,15 @@ class ApiResponse
   $result['documentRoot'] = $_SERVER['DOCUMENT_ROOT'];
   $result['freeSpace'] = disk_free_space(getcwd());
   $result['tasksCount'] = count($tasks->data);
-  $result['tasks'] = $tasks->data;
+  
+  $tasks = $tasks->data;
+  
+  foreach($tasks as $key => $task)
+    {
+    $tasks[$key]['memoryUsage'] = dirSize(__archiveDIR.'local/'.$task['id']);
+    }
+  
+  $result['tasks'] = $tasks;
   $result['responseStatus'] = 'ok';
   
   return $result;

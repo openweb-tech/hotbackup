@@ -22,7 +22,7 @@
         <tr>
           <td><?php echo ($id + 1) ?></td>
           <td><a href="<?php echo __siteurl ?>/?r=store/download&fileName=<?php echo $file['name'] ?>&folder=local&taskId=<?php echo $taskId ?>" target="_blank"><?php echo $file['name'] ?></a></td>
-          <td><?php echo memryFormat($file['size']) ?></td>
+          <td><?php echo memoryFormat($file['size']) ?></td>
           <td><?php echo date('d.m.Y h:i', $file['time']) ?></td>
           <td class="align-right">
             <form method="post">
