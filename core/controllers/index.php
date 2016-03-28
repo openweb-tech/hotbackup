@@ -7,8 +7,8 @@ include_once __corePath.'libs/widget.php';
 
 class Page extends Controller
 { 
-
-  public function getColor()
+/*
+  public function getColor($offset = 0)
   {
   $r = rand(0, 210);
   $g = rand(0, 200);
@@ -25,7 +25,7 @@ class Page extends Controller
   
   return $color;
   }
-
+*/
   public function prepare()
   {
   
@@ -36,28 +36,41 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   
-  $header->data['title'] = 'Simple web page';
+  $header->data['title'] = 'Backup home';
 
   $tasksList = new JsonDB(__taskdb);
+  $serversList = new JsonDB(__serversdb);
   
   $backUpsUsage = array();
-  $backUpsUsage['title'] = 'Memory usage for BackUps';
-  $backUpsUsage['data'] = array();
   
   $usedByAllBackups = 0;
+  // for local backups
   foreach($tasksList->data as $task)
     {
-    $size = round(dirSize(__archiveDIR.'local/'.$task['id'])/(1024*1024));
+    $size = round(dirSize(__archiveDIR.'local/'.$task['id']));
     $usedByAllBackups += $size;
     
-    $color = $this->getColor();
-    
-    $backUpsUsage['data'][] = array('value' => $size, 
-    'color' =>$color['color'], 
-    'highlight' => $color['highlight'],
-    'label' => $task['title'].' (Mb)');
+    $backUpsUsage[] = array('value' => $size, 
+    'label' => 'local / '.$task['title']);
     }
+  //for remote backups
+  foreach($serversList->data as $server)
+    foreach($server['tasks'] as $task)
+      {
+      $size = round(dirSize(__archiveDIR.'servers/'.$server['id'].'/'.$task['id']));
+      $usedByAllBackups += $size;
+      
+      $backUpsUsage[] = array('value' => $size, 
+      'label' => $server['name'].' / '.$task['title']);
+      }
   
+  function iCmp($a, $b)
+    {
+    if($a['value'] > $b['value']) return 0;
+      else
+        return 1;
+    }
+  usort($backUpsUsage, "iCmp");
   
   $usedByBackupsTmp = dirSize(__archiveDIR.'local/');
   $usedByBackups = round($usedByBackupsTmp/(1024*1024));
@@ -85,7 +98,7 @@ class Page extends Controller
   $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
   
   $this->data['hddUsage'] = $widgets->show('PieGraph', $hddUsage);
-  $this->data['backUpsUsage'] = $widgets->show('PieGraph', $backUpsUsage);
+  $this->data['backUpsUsage'] = $backUpsUsage;
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
