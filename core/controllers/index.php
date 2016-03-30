@@ -7,25 +7,7 @@ include_once __corePath.'libs/widget.php';
 
 class Page extends Controller
 { 
-/*
-  public function getColor($offset = 0)
-  {
-  $r = rand(0, 210);
-  $g = rand(0, 200);
-  $b = rand(0, 200);
-  
-  $rh = $r +40;
-  $gh = $g +40;
-  $bh = $b +40;
-  
-  $c = dechex($r).dechex($g).dechex($b);
-  $h = dechex($rh).dechex($gh).dechex($bh);
-  
-  $color = array ('color' => "#$c", 'highlight' => "#$h");
-  
-  return $color;
-  }
-*/
+
   public function prepare()
   {
   
@@ -35,6 +17,7 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
+  $topMenu->prepare();
   
   $header->data['title'] = 'Backup home';
 
@@ -55,14 +38,15 @@ class Page extends Controller
     }
   //for remote backups
   foreach($serversList->data as $server)
-    foreach($server['tasks'] as $task)
-      {
-      $size = round(dirSize(__archiveDIR.'servers/'.$server['id'].'/'.$task['id']));
-      $usedByAllBackups += $size;
+    if(isset($server['tasks']))
+      foreach($server['tasks'] as $task)
+        {
+        $size = round(dirSize(__archiveDIR.'servers/'.$server['id'].'/'.$task['id']));
+        $usedByAllBackups += $size;
       
-      $backUpsUsage[] = array('value' => $size, 
-      'label' => $server['name'].' / '.$task['title']);
-      }
+        $backUpsUsage[] = array('value' => $size, 
+        'label' => $server['name'].' / '.$task['title']);
+        }
   
   function iCmp($a, $b)
     {
@@ -97,8 +81,12 @@ class Page extends Controller
   
   $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
   
+  $maxUsage = 0;
+  if(isset($backUpsUsage[0])) $maxUsage = $backUpsUsage[0]['value'];
+  
   $this->data['hddUsage'] = $widgets->show('PieGraph', $hddUsage);
   $this->data['backUpsUsage'] = $backUpsUsage;
+  $this->data['maxUsage'] = $maxUsage;
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();

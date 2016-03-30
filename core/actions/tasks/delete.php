@@ -17,8 +17,10 @@ class action extends actions
   
   $tasksDB->saveToFile(__taskdb);
   
+  $dir = __archiveDIR."local/$id";
+  deleteDir($dir);
+  
   $this->redirect('?r=tasks/list');
-
   }
 }
 

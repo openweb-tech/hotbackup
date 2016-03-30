@@ -11,9 +11,6 @@ $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
     <!-- backups table -->
     <div class="backupsGraph">
       <?php
-      
-      $max = $backUpsUsage[0]['value'];
-      
       function calcPercent($maxVal, $val)
         {
         return round( ($val/$maxVal)*100 );
@@ -23,7 +20,7 @@ $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
         {
       ?>
       <div class="graphRow">
-        <div class="graphIndicator" style="width: <?php echo calcPercent($max, $val['value']) ?>%;"></div>
+        <div class="graphIndicator" style="width: <?php echo calcPercent($maxUsage, $val['value']) ?>%;"></div>
         <div class="graphIndicatorValue"><?php echo memoryFormat($val['value']) ?></div>
         <div class="graphLabel"><?php echo $val['label'] ?></div>
         <div class="graphLabel"><?php echo $val['label'] ?></div>

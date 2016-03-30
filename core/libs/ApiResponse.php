@@ -42,7 +42,63 @@ class ApiResponse
       return $this->downloadFile($params['taskId'], $params['fileName']);
       break;
     
+    case 'updateTask':
+      return json_encode($this->updateTask($params));
+      break;
+    
+    case 'addTask':
+      return json_encode($this->addTask($params));
+      break;
+    
+    case 'deleteTask':
+      return json_encode($this->deleteTask($params));
+      break;
     }
+  }
+  
+  function deleteTask($params)
+  {
+  $tasks = new JsonDB($this->taskdb);
+  
+  $id = $params['id'];
+  
+  if(!isset($tasks->data[$id])) return array('responseStatus' => 'error');
+  
+  unset($tasks->data[$id]);
+  
+  $tasks->saveToFile($this->taskdb);
+  return array('responseStatus' => 'success', 'id' => $id);
+  }
+  
+  function addTask($params)
+  {
+  $tasks = new JsonDB($this->taskdb);
+  
+  $receivedTask = json_decode(base64_decode($params['task']), true);
+  $newId = time();
+  $newTask = array('id' => $newId);
+  
+  foreach($receivedTask as $key => $val)
+    $newTask[$key] = $val;
+  
+  $tasks->data[$newId] = $newTask;
+  
+  $tasks->saveToFile($this->taskdb);
+  return array('responseStatus' => 'success', 'id' => $newId, 'task' => $tasks->data[$newId]);
+  }
+  
+  function updateTask($params)
+  {
+  $tasks = new JsonDB($this->taskdb);
+  if(!isset($tasks->data[$params['id']])) return array('responseStatus' => 'error');
+  
+  $receivedTask = json_decode(base64_decode($params['task']), true);
+  
+  foreach($receivedTask as $key => $val)
+    $tasks->data[$params['id']][$key] = $val;
+    
+  $tasks->saveToFile($this->taskdb);
+  return array('responseStatus' => 'success', 'task' => $tasks->data[$params['id']]);
   }
   
   function downloadFile($task, $fileName)
@@ -110,7 +166,7 @@ class ApiResponse
   
   function checkToken()
   {
-  if(!isset($_REQUEST['token']))die(json_encode(array('responseStatus' => 'Unathorized')));
+  if(!isset($_REQUEST['token']))return 0;
   $params = $_REQUEST;
   unset($params['token']);
   $token = $this->genToken($params, $this->settings['apiKey']);

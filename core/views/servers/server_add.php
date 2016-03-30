@@ -33,6 +33,12 @@
     <p><label>Archive depth</label><br>
       <input  type="number" class="form-control" name="depth" value="2">
     </p>
+    <p><label>Delete archives after synchronization</label><br>
+      <select class="form-control" name="deleteSync">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </p>
   </div>
   
   <div class="col-md-6">

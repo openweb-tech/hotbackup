@@ -16,6 +16,8 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
+  $topMenu->prepare();
+  
   $header->data['title'] = 'Connect to the server';
   
   $this->data['header'] = $header->show();
@@ -35,6 +37,7 @@ class Page extends Controller
   if( !isset($formsent['apiKey'] )) $formsent['apiKey'] = '';
   if( !isset($formsent['archSync'] )) $formsent['archSync'] = '';
   if( !isset($formsent['archDepth'] )) $formsent['archDepth'] = '';
+  if( !isset($formsent['deleteSync'] )) $formsent['deleteSync'] = '';
       
   $this->data['formSent'] = $formsent;
   

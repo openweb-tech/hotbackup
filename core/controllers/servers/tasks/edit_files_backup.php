@@ -26,11 +26,12 @@ class Page extends Controller
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
   
-  $tasksList = new JsonDB(__taskdb);
+  $serversList = new JsonDB(__serversdb);
   
   $id = (int)$_GET['id'];
+  $sid = (int)$_GET['sid'];
   
-  $formsent = $tasksList->data[$id];
+  $formsent = $serversList->data[$sid]['tasks'][$id];
   
   if( isset($_SESSION['formSent']) && !empty($_SESSION['formSent']))
     $formsent = $_SESSION['formSent'];
@@ -41,13 +42,13 @@ class Page extends Controller
   if(!isset($formsent['type'])) $formsent['type'] = '';
   if(!isset($formsent['status'])) $formsent['status'] = '';
   if(!isset($formsent['deep'])) $formsent['deep'] = '';
-  if(!isset($formsent['mysql-backup-filename'])) $formsent['mysql-backup-filename'] = '';
-  if(!isset($formsent['mysql-backup-address'])) $formsent['mysql-backup-address'] = '';
-  if(!isset($formsent['mysql-backup-name'])) $formsent['mysql-backup-name'] = '';
-  if(!isset($formsent['mysql-backup-user'])) $formsent['mysql-backup-user'] = '';
-  if(!isset($formsent['mysql-backup-password'])) $formsent['mysql-backup-password'] = '';
-  
+  if(!isset($formsent['file-filename'])) $formsent['file-filename'] = '';
+  if(!isset($formsent['file-exclude'])) $formsent['file-exclude'] = '';
+ 
   $this->data['task'] = $formsent;
+  $this->data['serverName'] = $serversList->data[$sid]['name'];
+  $this->data['id'] = $id;
+  $this->data['sid'] = $sid;
   
   $_SESSION['formSent'] = array();
   
@@ -56,7 +57,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__corePath.'views/tasks/edit_mysql_backup.php', $this->data);
+  return $this->view(__corePath.'views/servers/tasks/edit_files_backup.php', $this->data);
   }
 }
 ?>

@@ -3,25 +3,10 @@
 include_once __corePath.'controllers/header.php';
 include_once __corePath.'controllers/footer.php';
 include_once __corePath.'controllers/topMenu.php';
+include_once __corePath.'libs/widget.php';
 
 class Page extends Controller
 { 
-
-  public function checkSettings($data)
-  {
-  $emptyData = array(
-  'serverName' => 'My new Backup server',
-  'shortName' => 'New_BCKP',
-  'apiKey' => '89498hgjdfgdjgb4lkjgo4uy'
-  );
-  
-  if(!empty($data))
-    foreach($data as $key=>$val)
-      $emptyData[$key] = $val;
-  
-  return $emptyData;
-  }
-  
   public function prepare()
   {
   
@@ -33,24 +18,25 @@ class Page extends Controller
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
   
-  $settings = new JsonDB(__settingsdb);
+  $header->data['title'] = 'New MYSQL backup';
   
-  $settings->data = $this->checkSettings($settings->data);
+  $this->data['widgets'] = new Widgets($this->db, __corePath.'widgets/', $this->config);
   
-  $header->data['title'] = 'Main settings';
-  
-  $this->data['settings'] = $settings->data;
+  $serversList = new JsonDB(__serversdb);
+  $sid = (int)$_GET['sid'];
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
+  $this->data['serverName'] = $serversList->data[$sid]['name'];
+  $this->data['sid'] = $sid;
   
   }
 
 
   public function show()
   {
-  return $this->view(__corePath.'views/settings/main.php', $this->data);
+  return $this->view(__corePath.'views/servers/tasks/add_mysql_backup.php', $this->data);
   }
 }
 ?>

@@ -26,11 +26,12 @@ class Page extends Controller
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
   
-  $tasksList = new JsonDB(__taskdb);
+  $serversList = new JsonDB(__serversdb);
   
   $id = (int)$_GET['id'];
+  $sid = (int)$_GET['sid'];
   
-  $formsent = $tasksList->data[$id];
+  $formsent = $serversList->data[$sid]['tasks'][$id];
   
   if( isset($_SESSION['formSent']) && !empty($_SESSION['formSent']))
     $formsent = $_SESSION['formSent'];
@@ -48,6 +49,9 @@ class Page extends Controller
   if(!isset($formsent['mysql-backup-password'])) $formsent['mysql-backup-password'] = '';
   
   $this->data['task'] = $formsent;
+  $this->data['serverName'] = $serversList->data[$sid]['name'];
+  $this->data['id'] = $id;
+  $this->data['sid'] = $sid;
   
   $_SESSION['formSent'] = array();
   
@@ -56,7 +60,7 @@ class Page extends Controller
 
   public function show()
   {
-  return $this->view(__corePath.'views/tasks/edit_mysql_backup.php', $this->data);
+  return $this->view(__corePath.'views/servers/tasks/edit_mysql_backup.php', $this->data);
   }
 }
 ?>

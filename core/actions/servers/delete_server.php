@@ -18,7 +18,7 @@ class action extends actions
   
   $serversDB->saveToFile(__serversdb);
   
-  removeDir( __archiveDIR.'servers/'.$server['id']);
+  deleteDir( __archiveDIR.'servers/'.$server['id']);
   
   $this->redirect('?r=servers/servers');
   }

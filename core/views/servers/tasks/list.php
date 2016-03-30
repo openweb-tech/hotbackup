@@ -4,11 +4,12 @@
 
 $taskStatuses = array(
 0 => 'Disabled',
-1 => 'Enabled');
+1 => 'Enabled',
+2 => 'Error');
 
 ?>
 <div class="container">
-<h1><?php echo $server['name'] ?></h1>
+<h1>Tasks list</h1>
 <!-- actions menu -->
 <div class="row">
   <div class="col-md-6"></div>
@@ -45,23 +46,24 @@ $taskStatuses = array(
       </thead>
       <tbody>
       <?php 
-      //print_r($tasksList);
-      foreach($tasksList as $key => $task)
+      foreach($tasksList as $key=>$task)
         {
+        if($task['execStatus']) $status = $task['execStatus'];
+          else
+            $status = $task['status'];
         ?>
         <tr>
           <td><?php echo $task['id'] ?></td>
-          <td><a href="<?php echo __siteurl ?>/?r=servers/tasks/edit_<?php echo $task['type'] ?>&id=<?php echo $task['id'] ?>&sid=<?php echo (int)$_GET['id'] ?>"><?php echo $task['title'] ?></a></td>
+          <td><a href="<?php echo __siteurl ?>/?r=tasks/edit_<?php echo $task['type'] ?>&id=<?php echo $task['id'] ?>"><?php echo $task['title'] ?></a></td>
           <td><?php echo date('d.m.Y h:i', $task['lastExec']) ?></td>
           <td><?php echo date('d.m.Y h:i', nextExecDateTime($task)) ?></td>
-          <td><?php echo memoryFormat($task['memoryUsage']) ?></td>
+          <td><?php echo getMemoryUsage($task) ?></td>
           <td><?php echo $task['type'] ?></td>
-          <td><span class="tag_<?php echo strtolower($taskStatuses[$task['status']]) ?>"><?php echo $taskStatuses[$task['status']] ?><span></td>
+          <td><span class="tag_<?php echo strtolower($taskStatuses[$status]) ?>"><?php echo $taskStatuses[$status] ?><span></td>
           <td class="align-right">
             <form method="post">
-              <input type="hidden" name="action" value="servers/tasks/delete">
+              <input type="hidden" name="action" value="tasks/delete">
               <input type="hidden" name="id" value="<?php echo $task['id']  ?>">
-              <input type="hidden" name="sid" value="<?php echo (int)$_GET['id']  ?>">
               <input type="submit" class="btn btn-xs btn-danger" value="Delete" onclick="return confirm('Are u shure?') ? true : false;">
             </form>
           </td>

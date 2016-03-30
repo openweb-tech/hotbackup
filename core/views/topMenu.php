@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo __siteurl ?>/?r=settings/main">Settings</a></li>
-        <li><a href="#"><?php echo $_SESSION['user']['login'] ?></a></li>
+        <li><a href="<?php echo __siteurl ?>/?r=users/edit&id=<?php echo $userId ?>"><?php echo $userName ?></a></li>
         <li><a href="<?php echo __siteurl ?>/?r=logout">Log out</a></li>
       </ul>
     </div>

@@ -16,9 +16,36 @@ class ApiQuery
   {
   $params = array('action' => 'serverinfo');
   $params['token'] = $this->genToken($params, $this->token);
-  
   $query = $this->getQuery($params);
   return json_decode(file_get_contents($query), $returnarray);
+  }
+  
+  function deleteTask($id, $returnarray = false)
+  {
+  $params = array('action' => 'deleteTask', 'id' => $id);
+  $params['token'] = $this->genToken($params, $this->token);
+  $query = $this->getQuery($params);
+  $res = file_get_contents($query);
+  echo $res;
+  return json_decode($res, $returnarray);
+  }
+  
+  function updateTask($task, $id, $returnarray = false)
+  {
+  $params = array('action' => 'updateTask', 'task' => base64_encode(json_encode($task)), 'id' => $id);
+  $params['token'] = $this->genToken($params, $this->token);
+  $query = $this->getQuery($params);
+  $res = file_get_contents($query);
+  return json_decode($res, $returnarray);
+  }
+  
+  function addTask($task, $returnarray = false)
+  {
+  $params = array('action' => 'addTask', 'task' => base64_encode(json_encode($task)));
+  $params['token'] = $this->genToken($params, $this->token);
+  $query = $this->getQuery($params);
+  $res = file_get_contents($query);
+  return json_decode($res, $returnarray);
   }
   
   function getTasksList($returnarray = false)

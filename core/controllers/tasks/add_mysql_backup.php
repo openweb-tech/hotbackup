@@ -16,6 +16,7 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
+  $topMenu->prepare();
   
   $header->data['title'] = 'New MYSQL backup';
   
