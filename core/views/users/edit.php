@@ -23,29 +23,43 @@
 <?php  } ?>
 <div class="row">
   <div class="col-md-4">
-    <p><label>Login</label><br><input type="text" class="form-control" name="login" value="<?php echo $user['login'] ?>" ></p>
-    <p><label>E-mail</label><br><input type="text" class="form-control" name="email" value="<?php echo $user['email'] ?>" ></p>
+    <fieldset class="form-group">
+      <label>Login</label>
+      <input type="text" class="form-control" name="login" value="<?php echo $user['login'] ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>E-mail</label>
+      <input type="text" class="form-control" name="email" value="<?php echo $user['email'] ?>" >
+    </fieldset>
   </div>
   
   <div class="col-md-4">
-    <p><label>Password</label><br><input type="text" class="form-control" name="password1" value="<?php echo $user['password1'] ?>" ></p>
-    <p><label>Password</label><br><input type="text" class="form-control" name="password2" name="password1" value="<?php echo $user['password2'] ?>"></p>
+    <fieldset class="form-group">
+      <label>Password</label>
+      <input type="text" class="form-control" name="password1" value="<?php echo $user['password1'] ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Password</label>
+      <input type="text" class="form-control" name="password2" name="password1" value="<?php echo $user['password2'] ?>">
+    </fieldset>
   </div>
   
   <div class="col-md-4">
-    <p><label>Access group</label><br>
+    <fieldset class="form-group">
+      <label>Access group</label>
       <select class="form-control" name="accessGroup">
         <option value="administrator">Administrator</option>
         <option value="manager">Manager</option>
         <option value="guest">Guest</option>
       </select>
-    </p>
-    <p><label>Alerts</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Alerts</label>
       <select class="form-control" name="alerts">
         <option value="none">None</option>
         <option value="all">All</option>
       </select>
-    </p>
+    </fieldset>
   </div>
 </div>
 

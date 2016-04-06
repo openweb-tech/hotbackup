@@ -21,7 +21,11 @@ $taskStatuses = array(
     <ul class="dropdown-menu">
       <li><a href="<?php echo __siteurl ?>/?r=tasks/add_mysql_backup">MYSQL backup</a></li>
       <li><a href="<?php echo __siteurl ?>/?r=tasks/add_files_backup">Files backup</a></li>
-      <li><a href="<?php echo __siteurl ?>/?r=tasks/add_donwnload_url">Donwload url</a></li>
+      <li class="divider"></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Postgre Backup</a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Firebird Backup</a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Donwload url</a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Execute script</a></li>
     </ul>
   </div>
   

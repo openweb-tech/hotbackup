@@ -1,4 +1,5 @@
-    <p><label>Start</label><br>
+    <fieldset class="form-group">
+      <label>Start</label>
       <select class="form-control" name="n-start">
         <option value="n-minutes">Every n minutes</option>
         <option value="n-every-hour">Every hour</option>
@@ -6,62 +7,73 @@
         <option value="n-month">Every Month</option>
         <option value="n-once">Once</option>
       </select>
-    </p>
+    </fieldset>
     
     <!-- Once -->
     <div class="execTime" id="n-once" style="display:none;">
       <div class="row pseudo-p">
       
         <div class="col-md-4">
-        <label>Month</label><br>
-        <select class="form-control" name="n-once-month">
-         <?php 
-         for($i=0;$i<12;$i++)
-           echo "<option value='$i'>".date("M",mktime(0,0,0,$i,1,2000))."</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Month</label>
+            <select class="form-control" name="n-once-month">
+             <?php 
+             for($i=0;$i<12;$i++)
+               echo "<option value='$i'>".date("M",mktime(0,0,0,$i,1,2000))."</option>\n";
+             ?>
+            </select>
+          </fieldset>
         </div>
         
         <div class="col-md-4">
-        <label>Day</label><br>
-        <select class="form-control" name="n-once-day">
-         <?php 
-         for($i=1;$i<31;$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Day</label>
+            <select class="form-control" name="n-once-day">
+            <?php 
+            for($i=1;$i<31;$i++)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
         <div class="col-md-4">
-        <label>Year</label><br>
-        <select class="form-control" name="n-once-year">
-         <?php
-         $curYear = date('Y', time());
-         for($i=$curYear;$i<($curYear+5);$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Year</label>
+            <select class="form-control" name="n-once-year">
+             <?php
+             $curYear = date('Y', time());
+               for($i=$curYear;$i<($curYear+5);$i++)
+                 echo "<option value='$i'>$i</option>\n";
+             ?>
+            </select>
+          </fieldset>
         </div>
       </div>
+      
       <div class="row pseudo-p">
         <div class="col-md-6">
-        <label>Hour</label><br>
-        <select class="form-control" name="n-once-hour">
-         <?php 
-         for($i=0;$i<23;$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Hour</label>
+            <select class="form-control" name="n-once-hour">
+             <?php 
+             for($i=0;$i<23;$i++)
+               echo "<option value='$i'>$i</option>\n";
+             ?>
+            </select>
+          </fieldset>
         </div>
         
         <div class="col-md-6">
-        <label>Minutes</label><br>
-        <select class="form-control" name="n-once-minutes">
-         <?php 
-         for($i=0;$i<60;$i+=5)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Minutes</label>
+            <select class="form-control" name="n-once-minutes">
+            <?php 
+            for($i=0;$i<60;$i+=5)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
       </div>
@@ -71,34 +83,41 @@
     <!-- Every n Month -->
     <div class="execTime" id="n-month" style="display:none;">
       <div class="row pseudo-p">
+      
         <div class="col-md-4">
-        <label>Day</label><br>
-        <select class="form-control" name="n-month-day">
-         <?php 
-         for($i=1;$i<30;$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Day</label>
+            <select class="form-control" name="n-month-day">
+            <?php 
+            for($i=1;$i<30;$i++)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
       
         <div class="col-md-4">
-        <label>Hour</label><br>
-        <select class="form-control" name="n-month-hour">
-         <?php 
-         for($i=0;$i<23;$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Hour</label>
+            <select class="form-control" name="n-month-hour">
+            <?php 
+            for($i=0;$i<23;$i++)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
         <div class="col-md-4">
-        <label>Minutes</label><br>
-        <select class="form-control" name="n-month-minutes">
-         <?php 
-         for($i=0;$i<60;$i+=5)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Minutes</label>
+            <select class="form-control" name="n-month-minutes">
+            <?php 
+            for($i=0;$i<60;$i+=5)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
       </div>
@@ -108,24 +127,29 @@
     <!-- Every n Day -->
     <div class="execTime" id="n-day" style="display:none;">
       <div class="row pseudo-p">
+      
         <div class="col-md-6">
-        <label>Hour</label><br>
-        <select class="form-control" name="n-day-hour">
-         <?php 
-         for($i=0;$i<23;$i++)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Hour</label>
+            <select class="form-control" name="n-day-hour">
+            <?php 
+            for($i=0;$i<23;$i++)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
         <div class="col-md-6">
-        <label>Minutes</label><br>
-        <select class="form-control" name="n-day-minute">
-         <?php 
-         for($i=0;$i<60;$i+=5)
-           echo "<option value='$i'>$i</option>\n";
-         ?>
-        </select>
+          <fieldset class="form-group">
+            <label>Minutes</label>
+            <select class="form-control" name="n-day-minute">
+            <?php 
+            for($i=0;$i<60;$i+=5)
+              echo "<option value='$i'>$i</option>\n";
+            ?>
+            </select>
+          </fieldset>
         </div>
         
       </div>
@@ -134,25 +158,29 @@
     
     <!-- Every every hour -->
     <div class="execTime" id="n-every-hour" style="display:none;">
-      <label>Minutes</label><br>
-      <select class="form-control" name="n-every-hour-minute">
-       <?php 
-       for($i=0;$i<60;$i+=5)
-         echo "<option value='$i'>$i</option>\n";
-       ?>
-      </select>      
+      <fieldset class="form-group">
+        <label>Minutes</label>
+        <select class="form-control" name="n-every-hour-minute">
+        <?php 
+        for($i=0;$i<60;$i+=5)
+          echo "<option value='$i'>$i</option>\n";
+        ?>
+        </select>
+      </fieldset>
     </div>
     <!-- Every every hour -->
     
     <!-- Every n minutes -->
     <div class="execTime" id="n-minutes">
-      <label>Minutes</label><br>
-      <select class="form-control" name="n-minutes-minute">
-       <?php 
-       for($i=0;$i<60;$i+=5)
-         echo "<option value='$i'>$i</option>\n";
-       ?>
-      </select>      
+      <fieldset class="form-group">
+        <label>Minutes</label>
+        <select class="form-control" name="n-minutes-minute">
+        <?php 
+        for($i=0;$i<60;$i+=5)
+          echo "<option value='$i'>$i</option>\n";
+        ?>
+        </select>
+      </fieldset>
     </div>
     <!-- Every n minutes -->
     

@@ -22,17 +22,21 @@
 <?php  } ?>
 <div class="row">
   <div class="col-md-4">
-    <p><label>Title</label><br><input type="text" class="form-control" name="title" value="<?php  ?>" ></p>
-    <p><label>Status</label><br>
+    <fieldset class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" value="<?php  ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Status</label>
       <select class="form-control" name="status">
         <option value="1" class="tag_enabled">Enabled</option>
         <option value="0" class="tag_disabled">Disabled</option>
       </select>
-    </p>
-    <p>
-      <label>Archiving depth</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Archiving depth</label>
       <input  type="number" class="form-control" name="deep" value="1">
-    </p>
+    </fieldset>
     
     <?php echo $widgets->show('DateTimePicker', array()); ?>
     
@@ -42,18 +46,22 @@
     
     <!-- MYSQL backup -->
     <div class="taskTypes" id="MYSQL-backup" >
-      <p><label>DB address</label><br>
+      <fieldset class="form-group">
+        <label>DB address</label>
         <input type="text" name="mysql-backup-address" class="form-control">
-      </p>
-      <p><label>DB name</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB name</label>
         <input type="text" name="mysql-backup-name" class="form-control">
-      </p>
-      <p><label>DB user</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB user</label>
         <input type="text" name="mysql-backup-user" class="form-control">
-      </p>
-      <p><label>DB password</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB password</label>
         <input type="text" name="mysql-backup-password" class="form-control">
-      </p>
+      </fieldset>
     </div>
     <!-- MYSQL backup -->
   </div>

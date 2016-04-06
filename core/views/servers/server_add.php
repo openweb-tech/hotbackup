@@ -22,23 +22,32 @@
 <?php  } ?>
 <div class="row">
   <div class="col-md-6">
-    <p><label>Address</label><br><input type="text" class="form-control" name="address" value="<?php echo $formSent['address'] ?>" placeholder="http://www.your-server.com/backup"></p>
-    <p><label>Api key</label><br><input type="text" class="form-control" name="apiKey" value="<?php echo $formSent['apiKey'] ?>" ></p>
-    <p><label>Download archives</label><br>
+    <fieldset class="form-group">
+      <label>Address</label>
+      <input type="text" class="form-control" name="address" value="<?php echo $formSent['address'] ?>" placeholder="http://www.your-server.com/backup">
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Api key</label>
+      <input type="text" class="form-control" name="apiKey" value="<?php echo $formSent['apiKey'] ?>" >
+      </fieldset>
+    <fieldset class="form-group">
+      <label>Download archives</label>
       <select class="form-control" name="archSync">
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
-    </p>
-    <p><label>Archive depth</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Archive depth</label>
       <input  type="number" class="form-control" name="depth" value="2">
-    </p>
-    <p><label>Delete archives after synchronization</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Delete archives after synchronization</label>
       <select class="form-control" name="deleteSync">
         <option value="1">Yes</option>
         <option value="0">No</option>
       </select>
-    </p>
+    </fieldset>
   </div>
   
   <div class="col-md-6">

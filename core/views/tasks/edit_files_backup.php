@@ -23,17 +23,21 @@
 <?php  } ?>
 <div class="row">
   <div class="col-md-4">
-    <p><label>Title</label><br><input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" ></p>
-    <p><label>Status</label><br>
+    <fieldset class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Status</label>
       <select class="form-control" name="status">
         <option value="1" class="tag_enabled">Enabled</option>
         <option value="0" class="tag_disabled">Disabled</option>
       </select>
-    </p>
-    <p>
-      <label>Archiving depth</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Archiving depth</label>
       <input  type="number" class="form-control" name="deep" value="<?php echo $task['deep']  ?>">
-    </p>
+    </fieldset>
     <?php echo $widgets->show('DateTimePicker', array('frequency' => $task['frequency'] )); ?>
     
   </div>
@@ -42,10 +46,12 @@
     
     <!-- FILES backup -->
     <div class="taskTypes" id="MYSQL-backup" >
-      <p><label>Folder/file name</label><br>
+      <fieldset class="form-group">
+        <label>Folder/file name</label>
         <input type="text" name="file-filename" class="form-control" value="<?php echo $task['file-filename'] ?>">
-      </p>
-      <p><label>Exclude files/folders (every item on new line)</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>Exclude files/folders (every item on new line)</label>
         <textarea name="file-exclude" class="form-control" style="height:240px;"><?php echo htmlspecialchars_decode($task['file-exclude'], ENT_QUOTES) ?></textarea>
     </div>
     <!-- FILES backup -->

@@ -24,17 +24,21 @@
 <?php  } ?>
 <div class="row">
   <div class="col-md-4">
-    <p><label>Title</label><br><input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" ></p>
-    <p><label>Status</label><br>
+    <fieldset class="form-group">
+      <label>Title</label>
+      <input type="text" class="form-control" name="title" value="<?php echo $task['title']  ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Status</label>
       <select class="form-control" name="status">
         <option value="1">Enabled</option>
         <option value="0">Disabled</option>
       </select>
-    </p>
-    <p>
-      <label>Archive depth</label><br>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Archive depth</label>
       <input  type="number" class="form-control" name="deep" value="<?php echo $task['deep']  ?>">
-    </p>
+    </fieldset>
     <?php echo $widgets->show('DateTimePicker', array('frequency' => $task['frequency'] )); ?>
     
   </div>
@@ -43,18 +47,22 @@
     
     <!-- MYSQL backup -->
     <div class="taskTypes" id="MYSQL-backup" >
-      <p><label>DB address</label><br>
+      <fieldset class="form-group">
+        <label>DB address</label>
         <input type="text" name="mysql-backup-address" class="form-control" value="<?php echo $task['mysql-backup-address'] ?>">
-      </p>
-      <p><label>DB name</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB name</label>
         <input type="text" name="mysql-backup-name" class="form-control" value="<?php echo $task['mysql-backup-name'] ?>">
-      </p>
-      <p><label>DB user</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB user</label>
         <input type="text" name="mysql-backup-user" class="form-control" value="<?php echo $task['mysql-backup-user'] ?>">
-      </p>
-      <p><label>DB password</label><br>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>DB password</label>
         <input type="text" name="mysql-backup-password" class="form-control" value="<?php echo $task['mysql-backup-password'] ?>">
-      </p>
+      </fieldset>
     </div>
     <!-- MYSQL backup -->
   </div>
