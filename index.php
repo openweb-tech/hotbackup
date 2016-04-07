@@ -5,6 +5,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 
 include 'conf.php';
+
+if(!defined('__corePath'))
+  die('Bad installation');
+
 include __corePath.'libs/db.php';
 include __corePath.'libs/core.php';
 include __corePath.'libs/controller.php';

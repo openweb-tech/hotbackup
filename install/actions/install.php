@@ -11,7 +11,16 @@ class action extends actions
   $folder = $_POST['folder'];
   $workUrl = $_POST['workUrl'];
   
-  if( ( $pass2 == $pass1 )&& ( $login != '' ) && ( $email != '' ) && is_dir($folder) && ( $workUrl != '' ) )
+  $beforeInstallError = 0;
+  
+  if( !is_writable('../archive/'))
+    $beforeInstallError = 1;
+  if( !is_writable('../core/data'))
+    $beforeInstallError = 1;
+  if( !is_writable('../conf.php'))
+    $beforeInstallError = 1;
+  
+  if( ($beforeInstallError) && ( $pass2 == $pass1 )&& ( $login != '' ) && ( $email != '' ) && is_dir($folder) && ( $workUrl != '' ) )
     {
     $id = time();
     $newUser = array(
@@ -23,13 +32,13 @@ class action extends actions
       'alerts' => 'all'  
     );
     $usersDB = new JsonDB('../core/data/users.json');
-    $usersDB->data = [];
+    $usersDB->data = array();
     $usersDB->data[$id] = $newUser;
     $usersDB->saveToFile('../core/data/users.json');
     
     $basePath = str_replace('install/index.php', '', $_SERVER['SCRIPT_FILENAME']);
-    $httpPath = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('install/', '', $_SERVER['REQUEST_URI']);
-    $urlPath = str_replace('install/', '', $_SERVER['REQUEST_URI']);
+    $httpPath = 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/install/', '', $_SERVER['REQUEST_URI']);
+    $urlPath = str_replace('/install/', '', $_SERVER['REQUEST_URI']);
     $salt = md5(rand());
 
     $config = file_get_contents($basePath.'conf.php');
@@ -41,14 +50,29 @@ class action extends actions
     
     file_put_contents($basePath.'conf.php', $config);
     
-    $_SESSION['formSent'] = [];
+    unset($_SESSION['formSent']);
     
+    //-- check installation
+    
+    // check usersDB
+    $afretInstallError = 0;
+    
+    $usersDB = new JsonDB('../core/data/users.json');
+    if( !isset($usersDB->data[0]) )
+      $afretInstallError = 1;
+    
+    if( $afretInstallError )
+      $this->redirect('?r=error');
+    //--
     $this->redirect('?r=success');
     } else {
     
     $_SESSION['formSent'] = $_POST;
     
-    $_SESSION['error'] = 'Please check the installation form!';
+    if $beforeInstallError
+      $_SESSION['error'] = 'Please check write permissions foe work folder.';
+    else
+      $_SESSION['error'] = 'Please check the installation form!';
     
     $this->redirect('');
     

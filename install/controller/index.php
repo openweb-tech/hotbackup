@@ -22,8 +22,9 @@ class Page extends Controller
   $error = '';
   if( isset($_SESSION['error']) )
     $error = $_SESSION['error'];
-  unset($_SESSION['error']);
-  $formSent = [];
+
+  $formSent = array();
+  
   if(isset($_SESSION['formSent']))
     $formSent = $_SESSION['formSent'];
   else
@@ -35,7 +36,7 @@ class Page extends Controller
     $formSent['folder'] = $workFolder;
     $formSent['workUrl'] = $workUrl;
     }
-  
+  unset($_SESSION['error']);
   $this->data['formSent'] = $formSent;
   $this->data['error'] = $error;
   }

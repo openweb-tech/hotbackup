@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-md-6"></div>
   <div class="col-md-6 align-right">
-    <a href="<?php echo __siteurl ?>/?r=tasks/list" class="btn">Back</a>
+    <a href="<?php echo __siteurl ?>/?r=servers/server_tasks_list&id=<?php echo $sid ?>" class="btn">Back</a>
     <input type="submit" class="btn btn-primary" value="Save">
   </div>
 </div>
