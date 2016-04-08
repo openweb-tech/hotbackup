@@ -20,7 +20,7 @@ class action extends actions
   if( !is_writable('../conf.php'))
     $beforeInstallError = 1;
   
-  if( ($beforeInstallError) && ( $pass2 == $pass1 )&& ( $login != '' ) && ( $email != '' ) && is_dir($folder) && ( $workUrl != '' ) )
+  if( ( $beforeInstallError == 0 ) && ( $pass2 == $pass1 )&& ( $login != '' ) && ( $email != '' ) && is_dir($folder) && ( $workUrl != '' ) )
     {
     $id = time();
     $newUser = array(
@@ -58,18 +58,18 @@ class action extends actions
     $afretInstallError = 0;
     
     $usersDB = new JsonDB('../core/data/users.json');
-    if( !isset($usersDB->data[0]) )
-      $afretInstallError = 1;
-    
-    if( $afretInstallError )
+    if( count($usersDB->data) == 0 )
+      {
       $this->redirect('?r=error');
+      $_SESSION['error'] = 'Unable to access to users db, please check permissions to the /core/data folder.';
+      }
     //--
     $this->redirect('?r=success');
     } else {
     
     $_SESSION['formSent'] = $_POST;
     
-    if $beforeInstallError
+    if( $beforeInstallError )
       $_SESSION['error'] = 'Please check write permissions foe work folder.';
     else
       $_SESSION['error'] = 'Please check the installation form!';

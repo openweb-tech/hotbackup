@@ -8,6 +8,11 @@ include 'conf.php';
 
 if(!defined('__corePath'))
   die('Bad installation');
+if(__corePath == '{basePath}core/')
+  {
+  header('location: ' . str_replace('index.php', '', $_SERVER['PHP_SELF']) . 'install/');
+  die();
+  }
 
 include __corePath.'libs/db.php';
 include __corePath.'libs/core.php';
