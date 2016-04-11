@@ -25,9 +25,18 @@
 
 <div class="row">
   <div class="col-md-4">
-    <p><label>Server name</label><br><input type="text" class="form-control" name="serverName" value="<?php echo $settings['serverName'] ?>" ></p>
-    <p><label>Short name</label><br><input type="text" class="form-control" name="shortName" value="<?php echo $settings['shortName'] ?>" ></p>
-    <p><label>Api key</label><br><input type="text" class="form-control" name="apiKey" value="<?php echo $settings['apiKey'] ?>" ></p>
+    <fieldset class="form-group">
+      <label>Server name</label>
+      <input type="text" class="form-control" name="serverName" value="<?php echo $settings['serverName'] ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Short name</label>
+      <input type="text" class="form-control" name="shortName" value="<?php echo $settings['shortName'] ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Api key</label>
+      <input type="text" class="form-control" name="apiKey" value="<?php echo $settings['apiKey'] ?>" >
+    </fieldset>
   </div>
   
   <div class="col-md-4">

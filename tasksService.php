@@ -63,7 +63,6 @@ foreach($tasksList->data as $key=>$task)
           $tasksList->data[$key]['lastExec'] = time();
       break;
       }
-  echo "-------------------------------------\n\n";
   }
 
 $tasksList->saveToFile(__taskdb);

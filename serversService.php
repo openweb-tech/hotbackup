@@ -16,13 +16,11 @@ lock('servers');
 $serversList = new JsonDB(__serversdb);
 
 foreach($serversList->data as $key => $server)
-  //if(checkServerTestTime($server, 60)) 
+  if(checkServerTestTime($server, 60)) 
     {
     $query = new ApiQuery($server['address'], $server['apiKey']);
     
     $info = $query->getServerInfo();
-    
-    print_r($info);
     
     if($info->responseStatus != 'Unathorized')
       {
