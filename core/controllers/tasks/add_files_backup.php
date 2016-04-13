@@ -18,7 +18,7 @@ class Page extends Controller
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
   
-  $header->data['title'] = 'New Files backup';
+  $header->data['title'] = $this->_LANG['tasks']['New Files backup'];
   
   $this->data['widgets'] = new Widgets($this->db, __corePath.'widgets/', $this->config);
   

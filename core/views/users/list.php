@@ -1,12 +1,12 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1>Users list</h1>
+<h1><?php echo $_LANG['users']['Users list'] ?></h1>
 <!-- actions menu -->
 <div class="row">
   <div class="col-md-6"></div>
   <div class="col-md-6 align-right">
-    <a href="<?php echo __siteurl ?>/?r=users/add" class="btn btn-primary">Add new</a>
+    <a href="<?php echo __siteurl ?>/?r=users/add" class="btn btn-primary"><?php echo $_LANG['users']['Add new'] ?></a>
   </div>
 </div>
 <!-- actions menu -->
@@ -16,11 +16,11 @@
     <table class="table">
       <thead>
        <tr>
-         <th>ID</th>
-         <th>Login</th>
-         <th>Email</th>
-         <th>Access group</th>
-         <th>Alerts</th>
+         <th><?php echo $_LANG['users']['ID'] ?></th>
+         <th><?php echo $_LANG['users']['Login'] ?></th>
+         <th><?php echo $_LANG['users']['Email'] ?></th>
+         <th><?php echo $_LANG['users']['Access group'] ?></th>
+         <th><?php echo $_LANG['users']['Alerts'] ?></th>
          <th></th>
        </tr>
       </thead>
@@ -39,7 +39,7 @@
             <form method="post">
               <input type="hidden" name="action" value="users/delete">
               <input type="hidden" name="id" value="<?php echo $user['id']  ?>">
-              <input type="submit" class="btn btn-xs btn-danger" value="Delete" onclick="return confirm('Are u shure?') ? true : false;">
+              <input type="submit" class="btn btn-xs btn-danger" value="<?php echo $_LANG['actions']['Delete'] ?>" onclick="return confirm('<?php echo $_LANG['users']['delete confirmation'] ?>') ? true : false;">
             </form>
           </td>
         </tr>

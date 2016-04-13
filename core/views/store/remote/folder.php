@@ -1,17 +1,17 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1><a href="<?php echo __siteurl ?>/?r=store/files">Store</a> / <a href="<?php echo __siteurl ?>/?r=store/remote">Remote</a> / <a href="<?php echo __siteurl ?>/?r=store/remote/server&id=<?php echo $serverId ?>"><?php echo $serverTitle ?></a> / <?php echo $taskTitle ?></h1>
+<h1><a href="<?php echo __siteurl ?>/?r=store/files"><?php echo $_LANG['store']['Store'] ?></a> / <a href="<?php echo __siteurl ?>/?r=store/remote"><?php echo $_LANG['store']['Remote'] ?></a> / <a href="<?php echo __siteurl ?>/?r=store/remote/server&id=<?php echo $serverId ?>"><?php echo $serverTitle ?></a> / <?php echo $taskTitle ?></h1>
 <div class="row">
   <div class="col-md-12">
   
     <table class="table">
       <thead>
        <tr>
-         <th>№</th>
-         <th>Name</th>
-         <th>Size</th>
-         <th>Created</th>
+         <th><?php echo $_LANG['store']['№'] ?></th>
+         <th><?php echo $_LANG['store']['Name'] ?></th>
+         <th><?php echo $_LANG['store']['Size'] ?></th>
+         <th><?php echo $_LANG['store']['Created'] ?></th>
          <th></th>
        </tr>
       </thead>
@@ -31,7 +31,7 @@
               <input type="hidden" name="fileName" value="<?php echo $file['name']  ?>">
               <input type="hidden" name="folder" value="remote">
               <input type="hidden" name="server" value="<?php echo $serverId ?>">
-              <input type="submit" class="btn btn-xs btn-danger" value="Delete" onclick="return confirm('Are u shure?') ? true : false;">
+              <input type="submit" class="btn btn-xs btn-danger" value="<?php echo $_LANG['actions']['Delete'] ?>" onclick="return confirm('<?php echo $_LANG['store']['delete confirmation'] ?>') ? true : false;">
             </form>
           </td>  
         </tr>

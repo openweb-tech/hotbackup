@@ -1,18 +1,18 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1><a href="<?php echo __siteurl ?>/?r=store/files">Store</a> / remote</h1>
+<h1><a href="<?php echo __siteurl ?>/?r=store/files"><?php echo $_LANG['store']['Store'] ?></a> / <?php echo $_LANG['store']['Remote'] ?></h1>
 <div class="row">
   <div class="col-md-12">
   
     <table class="table">
       <thead>
        <tr>
-         <th>ID</th>
-         <th>Title</th>
-         <th>Size</th>
-         <th>Folders count</th>
-         <th>Created</th>
+         <th><?php echo $_LANG['store']['ID'] ?></th>
+         <th><?php echo $_LANG['store']['Title'] ?></th>
+         <th><?php echo $_LANG['store']['Size'] ?></th>
+         <th><?php echo $_LANG['store']['Folders count'] ?></th>
+         <th><?php echo $_LANG['store']['Created'] ?></th>
          <th></th>
        </tr>
       </thead>

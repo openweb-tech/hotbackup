@@ -19,7 +19,7 @@ class Page extends Controller
   
   $tasksList = new JsonDB(__taskdb);
   
-  $header->data['title'] = 'Task list';
+  $header->data['title'] = $this->_LANG['tasks']['Tasks list'];
   
   $this->data['tasksList'] = $tasksList->data;
   

@@ -2,30 +2,27 @@
 <?php echo $topMenu ?>
 <?php 
 
-$taskStatuses = array(
-0 => 'Disabled',
-1 => 'Enabled',
-2 => 'Error');
+$taskStatuses = $_LANG['tasks']['statuses']
 
 ?>
 <div class="container">
-<h1>Tasks list</h1>
+<h1><?php echo $_LANG['tasks']['Tasks list'] ?></h1>
 <!-- actions menu -->
 <div class="row">
   <div class="col-md-6"></div>
   <div class="col-md-6">
   
     <div class="dropdown pull-right">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">New Task
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><?php echo $_LANG['tasks']['New Task'] ?>
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="<?php echo __siteurl ?>/?r=tasks/add_mysql_backup">MYSQL backup</a></li>
-      <li><a href="<?php echo __siteurl ?>/?r=tasks/add_files_backup">Files backup</a></li>
+      <li><a href="<?php echo __siteurl ?>/?r=tasks/add_mysql_backup"><?php echo $_LANG['tasks']['MYSQL backup'] ?></a></li>
+      <li><a href="<?php echo __siteurl ?>/?r=tasks/add_files_backup"><?php echo $_LANG['tasks']['Files backup'] ?></a></li>
       <li class="divider"></li>
-      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Postgre Backup</a></li>
-      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Firebird Backup</a></li>
-      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Donwload url</a></li>
-      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-">Execute script</a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-"><?php echo $_LANG['tasks']['Postgre Backup'] ?></a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-"><?php echo $_LANG['tasks']['Firebird Backup'] ?></a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-"><?php echo $_LANG['tasks']['Donwload url'] ?></a></li>
+      <li class="disabled"><a href="<?php echo __siteurl ?>/?r=tasks/-"><?php echo $_LANG['tasks']['Execute script'] ?></a></li>
     </ul>
   </div>
   
@@ -38,13 +35,13 @@ $taskStatuses = array(
     <table class="table">
       <thead>
        <tr>
-         <th>ID</th>
-         <th>Title</th>
-         <th>Last exec</th>
-         <th>Next exec</th>
-         <th>Memory usage</th>
-         <th>Type</th>
-         <th>Status</th>
+         <th><?php echo $_LANG['tasks']['ID'] ?></th>
+         <th><?php echo $_LANG['tasks']['Title'] ?></th>
+         <th><?php echo $_LANG['tasks']['Last exec'] ?></th>
+         <th><?php echo $_LANG['tasks']['Next exec'] ?></th>
+         <th><?php echo $_LANG['tasks']['Memory usage'] ?></th>
+         <th><?php echo $_LANG['tasks']['Type'] ?></th>
+         <th><?php echo $_LANG['tasks']['Status'] ?></th>
          <th></th>
        </tr>
       </thead>
@@ -68,7 +65,7 @@ $taskStatuses = array(
             <form method="post">
               <input type="hidden" name="action" value="tasks/delete">
               <input type="hidden" name="id" value="<?php echo $task['id']  ?>">
-              <input type="submit" class="btn btn-xs btn-danger" value="Delete" onclick="return confirm('Are u shure?') ? true : false;">
+              <input type="submit" class="btn btn-xs btn-danger" value="<?php echo $_LANG['actions']['Delete'] ?>" onclick="return confirm('<?php echo $_LANG['tasks']['delete confirmation'] ?>') ? true : false;">
             </form>
           </td>
         </tr>

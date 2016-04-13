@@ -1,18 +1,18 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1><a href="<?php echo __siteurl ?>/?r=store/files">Store</a> / local</h1>
+<h1><a href="<?php echo __siteurl ?>/?r=store/files"><?php echo $_LANG['store']['Store'] ?></a> / <?php echo $_LANG['store']['Local'] ?></h1>
 <div class="row">
   <div class="col-md-12">
   
     <table class="table">
       <thead>
        <tr>
-         <th>ID</th>
-         <th>Title</th>
-         <th>Size</th>
-         <th>Files count</th>
-         <th>Created</th>
+         <th><?php echo $_LANG['store']['ID'] ?></th>
+         <th><?php echo $_LANG['store']['Title'] ?></th>
+         <th><?php echo $_LANG['store']['Size'] ?></th>
+         <th><?php echo $_LANG['store']['Files count'] ?></th>
+         <th><?php echo $_LANG['store']['Created'] ?></th>
          <th></th>
        </tr>
       </thead>

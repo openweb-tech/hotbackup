@@ -4,7 +4,7 @@ $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1>BckUps status</h1>
+<h1><?php echo $_LANG['misc']['home_title'] ?></h1>
 <div class="row">
   <!-- 1 -->
   <div class="col-md-8">

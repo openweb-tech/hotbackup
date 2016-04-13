@@ -4,11 +4,8 @@
 
 function getServerStatus($code)
 {
-$statuses = array();
-$statuses[0] = 'Not checked';
-$statuses[1] = 'Active';
-$statuses[2] = 'No response';
-$statuses[3] = 'Unathorized';
+global $_LANG;
+$statuses = $_LANG['servers']['statuses'];
 return $statuses[$code];
 }
 
@@ -20,15 +17,14 @@ return '<img src="'.__siteurl.'/img/jx-loader-line.gif" />';
 
 ?>
 <div class="container">
-<h1>Servers list</h1>
+<h1><?php echo $_LANG['servers']['Servers list'] ?></h1>
 <!-- actions menu -->
 <div class="row">
   <div class="col-md-6"></div>
   <div class="col-md-6">
   
     <div class="dropdown pull-right">
-      <a class="btn btn-primary" href="<?php echo __siteurl ?>/?r=servers/server_add">New Server</a>
-
+      <a class="btn btn-primary" href="<?php echo __siteurl ?>/?r=servers/server_add"><?php echo $_LANG['servers']['New Server'] ?></a>
     </div>
   
   </div>
@@ -40,11 +36,11 @@ return '<img src="'.__siteurl.'/img/jx-loader-line.gif" />';
     <table class="table">
       <thead>
        <tr>
-         <th>Title</th>
-         <th>Address</th>
-         <th>Status</th>
-         <th>Free space</th>
-         <th>Tasks count</th>
+         <th><?php echo $_LANG['servers']['Title'] ?></th>
+         <th><?php echo $_LANG['servers']['Address'] ?></th>
+         <th><?php echo $_LANG['servers']['Status'] ?></th>
+         <th><?php echo $_LANG['servers']['Free space'] ?></th>
+         <th><?php echo $_LANG['servers']['Tasks count'] ?></th>
          <th></th>
          <th></th>
        </tr>
@@ -60,12 +56,12 @@ return '<img src="'.__siteurl.'/img/jx-loader-line.gif" />';
           <td><?php echo getServerStatus($server['status']) ?></td>
           <td><?php echo memoryFormat($server['freeSpace']) ?></td>
           <td><?php echo $server['tasksCount'] ?></td>
-          <td class="align-right"><a href="<?php echo __siteurl ?>/?r=servers/server_edit&id=<?php echo $server['id'] ?>" class="btn btn-xs btn-info">connection</a></td>
+          <td class="align-right"><a href="<?php echo __siteurl ?>/?r=servers/server_edit&id=<?php echo $server['id'] ?>" class="btn btn-xs btn-info"><?php echo $_LANG['servers']['connection'] ?></a></td>
           <td class="align-right">
             <form method="post">
               <input type="hidden" name="action" value="servers/delete_server">
               <input type="hidden" name="id" value="<?php echo $server['id']  ?>">
-              <input type="submit" class="btn btn-xs btn-danger" value="Delete" onclick="return confirm('Are u shure?') ? true : false;">
+              <input type="submit" class="btn btn-xs btn-danger" value="<?php echo $_LANG['actions']['Delete'] ?>" onclick="return confirm('<?php echo $_LANG['servers']['delete confirmation'] ?>') ? true : false;">
             </form>
           </td>
         </tr>

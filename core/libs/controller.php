@@ -16,7 +16,7 @@ class Controller
   $this->db = $db;
   $this->curpage = $curpage;
   $this->config = $appConfig;
-  $this->data = array();
+  $this->data = array('_LANG' => $_LANG);
   $this->template = __corePath.'views/index.php';
   
   }

@@ -63,20 +63,20 @@ class Page extends Controller
   $hddUsedSpace = $hddTotalSize - $hddFreeSpace - $usedByBackups;
   
   $hddUsage = array();
-  $hddUsage['title'] = 'HDD usage';
+  $hddUsage['title'] = $this->_LANG['misc']['HDD usage'];
   $hddUsage['data'] = array();
   $hddUsage['data'][] = array('value' => $usedByBackups, 
   'color' =>'#008d32', 
   'highlight' => '#2ac360',
-  'label' => 'Used by BackUps (Mb)');
+  'label' => $this->_LANG['misc']['Used by BackUps (Mb)']);
   $hddUsage['data'][] = array('value' => $hddUsedSpace, 
   'color' =>'#008aa3', 
   'highlight' => '#20abc4',
-  'label' => 'Hdd used by other (Mb)');
+  'label' => $this->_LANG['misc']['Hdd used by other (Mb)']);
   $hddUsage['data'][] = array('value' => $hddFreeSpace, 
   'color' =>'#a65200', 
   'highlight' => '#cd741c',
-  'label' => 'Hdd free space (Mb)');
+  'label' => $this->_LANG['misc']['Hdd free space (Mb)']);
   
   
   $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);

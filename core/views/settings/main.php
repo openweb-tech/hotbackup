@@ -1,7 +1,7 @@
 <?php echo $header ?>
 <?php echo $topMenu ?>
 <div class="container">
-<h1>Main settings</h1>
+<h1><?php echo $_LANG['settings']['Main settings'] ?></h1>
 <!-- actions menu -->
 <form method="post">
 <input type="hidden" name="action" value="settings/update_main">
@@ -9,8 +9,8 @@
 <div class="row">
   <div class="col-md-6"></div>
   <div class="col-md-6 align-right">
-    <a href="<?php echo __siteurl ?>/?r=settings/main" class="btn">Cancel</a>
-    <input type="submit" class="btn btn-primary" value="Save">
+    <a href="<?php echo __siteurl ?>/?r=settings/main" class="btn"><?php echo $_LANG['actions']['Cancel'] ?></a>
+    <input type="submit" class="btn btn-primary" value="<?php echo $_LANG['actions']['Save'] ?>">
   </div>
 </div>
 
@@ -26,16 +26,22 @@
 <div class="row">
   <div class="col-md-4">
     <fieldset class="form-group">
-      <label>Server name</label>
+      <label><?php echo $_LANG['settings']['Server name'] ?></label>
       <input type="text" class="form-control" name="serverName" value="<?php echo $settings['serverName'] ?>" >
     </fieldset>
     <fieldset class="form-group">
-      <label>Short name</label>
+      <label><?php echo $_LANG['settings']['Short name'] ?></label>
       <input type="text" class="form-control" name="shortName" value="<?php echo $settings['shortName'] ?>" >
     </fieldset>
     <fieldset class="form-group">
-      <label>Api key</label>
+      <label><?php echo $_LANG['settings']['Api key'] ?></label>
       <input type="text" class="form-control" name="apiKey" value="<?php echo $settings['apiKey'] ?>" >
+    </fieldset>
+    <fieldset class="form-group">
+      <label><?php echo $_LANG['settings']['Language interface'] ?></label>
+      <select name="lang" class="form-control">
+      
+      </select>
     </fieldset>
   </div>
   
