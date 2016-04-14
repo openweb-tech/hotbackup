@@ -17,8 +17,8 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
-  
-  $header->data['title'] = 'Main settings';
+
+  $header->data['title'] = $this->_LANG['servers']['Servers list'];
   
   $serversDB = new JsonDB(__serversdb);
   

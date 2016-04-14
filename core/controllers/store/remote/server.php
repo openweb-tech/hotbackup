@@ -47,12 +47,12 @@ class Page extends Controller
   if(isset($serversList->data[$id]))
     {
     $this->data['serverTitle'] = $serversList->data[$id]['name'];
-    $header->data['title'] = 'Store / remote / '.$serversList->data[$id]['name'];
+    $header->data['title'] = $this->_LANG['store']['Store'] .' / ' . $this->_LANG['store']['Remote'] . ' / '.$serversList->data[$id]['name'];
     }
     else
     {
-    $this->data['serverTitle'] = 'undefined';
-    $header->data['title'] = 'Store / remote / undefined';
+    $this->data['serverTitle'] = $this->_LANG['store']['undefined'];
+    $header->data['title'] = $this->_LANG['store']['Store'] .' / ' . $this->_LANG['store']['Remote'] . ' / ' . $this->_LANG['store']['undefined'];
     }
   
   $this->data['tasksFolders'] = $this->getServerFiles($serversList, $id);

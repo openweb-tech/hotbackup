@@ -10,7 +10,7 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   
-  $header->data['title'] = 'Auth page';
+  $header->data['title'] = $this->_LANG['auth']['Authorize'];
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();

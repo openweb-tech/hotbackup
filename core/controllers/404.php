@@ -12,7 +12,7 @@ class Page extends Controller
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   
-  $header->data['title'] = 'Simple web page';
+  $header->data['title'] = 'Page not found';
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();

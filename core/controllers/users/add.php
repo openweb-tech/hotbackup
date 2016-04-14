@@ -19,7 +19,7 @@ class Page extends Controller
   
   $usersList = new JsonDB(__userdb);
   
-  $header->data['title'] = 'Users list';
+  $header->data['title'] = $this->_LANG['users']['Add new user'];
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();

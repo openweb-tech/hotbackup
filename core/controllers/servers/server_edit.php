@@ -18,7 +18,7 @@ class Page extends Controller
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
   
-  $header->data['title'] = 'Connect to the server';
+  $header->data['title'] = $this->_LANG['servers']['Connectin information'];
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();

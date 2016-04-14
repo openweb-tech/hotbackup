@@ -42,8 +42,8 @@ class Page extends Controller
   $sid = (int)$_GET['sid'];
   $fid = (int)$_GET['fid'];
   
-  $serverTitle = 'Undefined';
-  $taskTitle = 'Undefined';
+  $serverTitle = $this->_LANG['store']['undefined'];
+  $taskTitle = $this->_LANG['store']['undefined'];
   
   if(isset($serversList->data[$sid]))
     $serverTitle = $serversList->data[$sid]['name'];
@@ -51,7 +51,7 @@ class Page extends Controller
   if(isset($serversList->data[$sid]['tasks'][$fid]))
     $taskTitle = $serversList->data[$sid]['tasks'][$fid]['title'];
   
-  $header->data['title'] = "Store / Remote / $serverTitle / $taskTitle";
+  $header->data['title'] = $this->_LANG['store']['Store'] . " / " . $this->_LANG['store']['Remote'] . " / $serverTitle / $taskTitle";
   
   $this->data['serverTitle'] = $serverTitle;
   $this->data['taskTitle'] = $taskTitle;

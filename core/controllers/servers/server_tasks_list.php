@@ -28,16 +28,13 @@ class Page extends Controller
   
   $tasksList = $query->getTasksList(true);
   
-  //print_r($tasksList);
-  
-  $header->data['title'] = $server['name'].': tasks list ';
+  $header->data['title'] = $server['name'];
   $this->data['server'] = $server;
   $this->data['tasksList'] = $tasksList;  
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
-  
   }
 
 

@@ -41,7 +41,7 @@ class Page extends Controller
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
   
-  $header->data['title'] = 'Store / remote';
+  $header->data['title'] = $this->_LANG['store']['Store'] . ' / ' . $this->_LANG['store']['Remote'];
   
   $this->data['servers'] = $this->getRemoteFolder();
   

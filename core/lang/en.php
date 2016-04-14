@@ -27,7 +27,6 @@ $_LANG['misc']['HDD usage'] = 'HDD usage';
 $_LANG['misc']['Used by BackUps (Mb)'] = 'Used by BackUps (Mb)';
 $_LANG['misc']['Hdd used by other (Mb)'] = 'Hdd used by other (Mb)';
 $_LANG['misc']['Hdd free space (Mb)'] = 'Hdd free space (Mb)';
-$_LANG['misc'][''] = '';
 // misc
 
 // actions
@@ -41,7 +40,6 @@ $_LANG['actions']['All'] = 'All';
 $_LANG['actions']['Cancel'] = 'Cancel';
 $_LANG['actions']['Yes'] = 'Yes';
 $_LANG['actions']['No'] = 'No';
-$_LANG['actions'][''] = '';
 // actions
 
 // tasks
@@ -76,7 +74,6 @@ $_LANG['tasks']['DB user'] = 'DB user';
 $_LANG['tasks']['DB password'] = 'DB password';
 $_LANG['tasks']['Edit MYSQL backup task'] = 'Edit MYSQL backup task';
 $_LANG['tasks']['Edit files backup task'] = 'Edit files backup task';
-$_LANG['tasks'][''] = '';
 // tasks
 
 // users
@@ -94,7 +91,8 @@ $_LANG['users']['Administrator'] = 'Administrator';
 $_LANG['users']['Manager'] = 'Manager';
 $_LANG['users']['Guest'] = 'Guest';
 $_LANG['users']['User'] = 'User';
-$_LANG['users'][''] = '';
+$_LANG['users']['Edit user, id:'] = 'Edit user, id:';
+$_LANG['users']['Add new user'] = 'Add new user';
 // users
 
 // settings
@@ -103,7 +101,6 @@ $_LANG['settings']['Server name'] = 'Server name';
 $_LANG['settings']['Short name'] = 'Short name';
 $_LANG['settings']['Api key'] = 'Api key';
 $_LANG['settings']['Language interface'] = 'Language interface';
-$_LANG['settings'][''] = '';
 // settings
 
 // store
@@ -119,7 +116,7 @@ $_LANG['store']['Folders count'] = 'Folders count';
 $_LANG['store']['№'] = '№';
 $_LANG['store']['Name'] = 'Name';
 $_LANG['store']['delete confirmation'] = 'Do you want to delete this file?';
-$_LANG['store'][''] = '';
+$_LANG['store']['undefined'] = 'undefined';
 // store
 
 // servers
@@ -144,23 +141,8 @@ $_LANG['servers']['Download archives'] = 'Download archives';
 $_LANG['servers']['Archive depth'] = 'Archive depth';
 $_LANG['servers']['Delete archives after synchronization'] = 'Delete archives after synchronization';
 $_LANG['servers']['Connectin information'] = 'Connectin information';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
-$_LANG['servers'][''] = '';
+$_LANG['servers']['(mysql)'] = '(mysql)';
+$_LANG['servers']['(files)'] = '(files)';
 // servers
-
-$_LANG[''][''] = '';
-$_LANG[''][''] = '';
-$_LANG[''][''] = '';
-$_LANG[''][''] = '';
-$_LANG[''][''] = '';
-$_LANG[''][''] = '';
-
-
 
 ?>

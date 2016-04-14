@@ -37,7 +37,7 @@ class Page extends Controller
   
   $settings->data = $this->checkSettings($settings->data);
   
-  $header->data['title'] = 'Main settings';
+  $header->data['title'] = $this->_LANG['settings']['Main settings'];
   
   $this->data['settings'] = $settings->data;
   

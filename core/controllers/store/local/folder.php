@@ -41,12 +41,12 @@ class Page extends Controller
   if(isset($tasksList->data[$id]))
     {
     $this->data['taskTitle'] = $tasksList->data[$id]['title'];
-    $header->data['title'] = 'Store / local / '.$tasksList->data[$id]['title'];
+    $header->data['title'] = $this->_LANG['store']['Store'] . ' / ' . $this->_LANG['store']['Local'] . ' / '.$tasksList->data[$id]['title'];
     }
     else
     {
-    $this->data['taskTitle'] = 'undefined';
-    $header->data['title'] = 'Store / local / undefined';
+    $this->data['taskTitle'] = $this->_LANG['store']['undefined'];
+    $header->data['title'] = $this->_LANG['store']['Store'] . ' / ' . $this->_LANG['store']['Local'] . ' / ' . $this->_LANG['store']['undefined'];
     }
   
   $this->data['files'] = $this->getlFolderFiles();

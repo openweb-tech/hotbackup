@@ -18,7 +18,7 @@ class Page extends Controller
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
   
-  $header->data['title'] = 'Store';
+  $header->data['title'] = $this->_LANG['store']['Store'];
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();

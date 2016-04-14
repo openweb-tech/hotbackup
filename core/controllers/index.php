@@ -18,8 +18,7 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
-  
-  $header->data['title'] = 'Backup home';
+  $header->data['title'] = $this->_LANG['misc']['home_title'];
 
   $tasksList = new JsonDB(__taskdb);
   $serversList = new JsonDB(__serversdb);
@@ -34,7 +33,7 @@ class Page extends Controller
     $usedByAllBackups += $size;
     
     $backUpsUsage[] = array('value' => $size, 
-    'label' => 'local / '.$task['title']);
+    'label' => $this->_LANG['store']['Local'] . ' / '.$task['title']);
     }
   //for remote backups
   foreach($serversList->data as $server)

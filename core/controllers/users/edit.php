@@ -21,7 +21,7 @@ class Page extends Controller
   
   $id = (int)$_GET['id'];
   
-  $header->data['title'] = 'Edir user id: '.$id;
+  $header->data['title'] = $this->_LANG['users']['Edit user, id:'] . ' '.$id;
   
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
