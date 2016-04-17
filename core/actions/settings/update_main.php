@@ -13,6 +13,7 @@ class action extends actions
   $settingsDB->data['serverName'] = $_POST['serverName'];
   $settingsDB->data['shortName'] = $_POST['shortName'];
   $settingsDB->data['apiKey'] = $_POST['apiKey'];
+  $settingsDB->data['lang'] = $_POST['lang'];
 
   $settingsDB->saveToFile(__settingsdb);
   

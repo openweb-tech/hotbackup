@@ -15,9 +15,11 @@ $widgets = new Widgets($this->db, __corePath.'widgets/', $this->config);
         {
         return round( ($val/$maxVal)*100 );
         }
-      
+      $count = 0;
       foreach($backUpsUsage as $key => $val)
         {
+        $count++;
+        if($count > 30) break;
       ?>
       <div class="graphRow">
         <div class="graphIndicator" style="width: <?php echo calcPercent($maxUsage, $val['value']) ?>%;"></div>

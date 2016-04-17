@@ -1,11 +1,11 @@
     <fieldset class="form-group">
-      <label>Start</label>
+      <label><?php echo $_LANG['ts_widget']['Start'] ?></label>
       <select class="form-control" name="n-start">
-        <option value="n-minutes">Every n minutes</option>
+        <option value="n-minutes"><?php echo $_LANG['ts_widget']['Every n minutes'] ?></option>
         <option value="n-every-hour">Every hour</option>
-        <option value="n-day">Every Day</option>
-        <option value="n-month">Every Month</option>
-        <option value="n-once">Once</option>
+        <option value="n-day"><?php echo $_LANG['ts_widget']['Every hour'] ?></option>
+        <option value="n-month"><?php echo $_LANG['ts_widget']['Every Month'] ?></option>
+        <option value="n-once"><?php echo $_LANG['ts_widget']['Once'] ?></option>
       </select>
     </fieldset>
     
@@ -15,7 +15,7 @@
       
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Month</label>
+            <label><?php echo $_LANG['ts_widget']['Month'] ?></label>
             <select class="form-control" name="n-once-month">
              <?php 
              for($i=0;$i<12;$i++)
@@ -27,7 +27,7 @@
         
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Day</label>
+            <label><?php echo $_LANG['ts_widget']['Day'] ?></label>
             <select class="form-control" name="n-once-day">
             <?php 
             for($i=1;$i<31;$i++)
@@ -39,7 +39,7 @@
         
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Year</label>
+            <label><?php echo $_LANG['ts_widget']['Year'] ?></label>
             <select class="form-control" name="n-once-year">
              <?php
              $curYear = date('Y', time());
@@ -54,7 +54,7 @@
       <div class="row pseudo-p">
         <div class="col-md-6">
           <fieldset class="form-group">
-            <label>Hour</label>
+            <label><?php echo $_LANG['ts_widget']['Hour'] ?></label>
             <select class="form-control" name="n-once-hour">
              <?php 
              for($i=0;$i<23;$i++)
@@ -66,7 +66,7 @@
         
         <div class="col-md-6">
           <fieldset class="form-group">
-            <label>Minutes</label>
+            <label><?php echo $_LANG['ts_widget']['Minutes'] ?></label>
             <select class="form-control" name="n-once-minutes">
             <?php 
             for($i=0;$i<60;$i+=5)
@@ -86,7 +86,7 @@
       
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Day</label>
+            <label><?php echo $_LANG['ts_widget']['Day'] ?></label>
             <select class="form-control" name="n-month-day">
             <?php 
             for($i=1;$i<30;$i++)
@@ -98,7 +98,7 @@
       
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Hour</label>
+            <label><?php echo $_LANG['ts_widget']['Hour'] ?></label>
             <select class="form-control" name="n-month-hour">
             <?php 
             for($i=0;$i<23;$i++)
@@ -110,7 +110,7 @@
         
         <div class="col-md-4">
           <fieldset class="form-group">
-            <label>Minutes</label>
+            <label><?php echo $_LANG['ts_widget']['Minutes'] ?></label>
             <select class="form-control" name="n-month-minutes">
             <?php 
             for($i=0;$i<60;$i+=5)
@@ -130,7 +130,7 @@
       
         <div class="col-md-6">
           <fieldset class="form-group">
-            <label>Hour</label>
+            <label><?php echo $_LANG['ts_widget']['Hour'] ?></label>
             <select class="form-control" name="n-day-hour">
             <?php 
             for($i=0;$i<23;$i++)
@@ -142,7 +142,7 @@
         
         <div class="col-md-6">
           <fieldset class="form-group">
-            <label>Minutes</label>
+            <label><?php echo $_LANG['ts_widget']['Minutes'] ?></label>
             <select class="form-control" name="n-day-minute">
             <?php 
             for($i=0;$i<60;$i+=5)
@@ -159,7 +159,7 @@
     <!-- Every every hour -->
     <div class="execTime" id="n-every-hour" style="display:none;">
       <fieldset class="form-group">
-        <label>Minutes</label>
+        <label><?php echo $_LANG['ts_widget']['Minutes'] ?></label>
         <select class="form-control" name="n-every-hour-minute">
         <?php 
         for($i=0;$i<60;$i+=5)
@@ -173,7 +173,7 @@
     <!-- Every n minutes -->
     <div class="execTime" id="n-minutes">
       <fieldset class="form-group">
-        <label>Minutes</label>
+        <label><?php echo $_LANG['ts_widget']['Minutes'] ?></label>
         <select class="form-control" name="n-minutes-minute">
         <?php 
         for($i=0;$i<60;$i+=5)

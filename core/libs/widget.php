@@ -7,6 +7,8 @@ public $widgets;
 
   function __construct($db, $widgetFolder, $config) 
   {
+  global $_LANG;
+  $this->_LANG = $_LANG;
   $this->db = $db;
   
   foreach (glob("$widgetFolder*.php") as $filename)
@@ -20,6 +22,7 @@ public $widgets;
   public function show($widget, $params = array())
   {
   $html = '';
+  $params['_LANG'] = $this->_LANG;
   extract($params);
   ob_start();
   eval('?>'.$this->widgets[$widget]);

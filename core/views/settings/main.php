@@ -40,7 +40,11 @@
     <fieldset class="form-group">
       <label><?php echo $_LANG['settings']['Language interface'] ?></label>
       <select name="lang" class="form-control">
-      
+      <?php
+        foreach($langs as $lang) {
+      ?>
+        <option value="<?php echo $lang ?>"><?php echo $lang ?></option>
+      <?php } ?>
       </select>
     </fieldset>
   </div>
@@ -61,7 +65,7 @@
 
 $(document).ready(function(){
 
-
+  $('select[name="lang"]').val('<?php echo $settings['lang'] ?>');
 
 });
 

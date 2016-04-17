@@ -145,4 +145,16 @@ $_LANG['servers']['(mysql)'] = '(mysql)';
 $_LANG['servers']['(files)'] = '(files)';
 // servers
 
+// time select widget
+$_LANG['ts_widget']['Start'] = 'Start';
+$_LANG['ts_widget']['Every n minutes'] = 'Every n minutes';
+$_LANG['ts_widget']['Every hour'] = 'Every hour';
+$_LANG['ts_widget']['Every Month'] = 'Every Month';
+$_LANG['ts_widget']['Once'] = 'Once';
+$_LANG['ts_widget']['Month'] = 'Month';
+$_LANG['ts_widget']['Day'] = 'Day';
+$_LANG['ts_widget']['Year'] = 'Year';
+$_LANG['ts_widget']['Hour'] = 'Hour';
+$_LANG['ts_widget']['Minutes'] = 'Minutes';
+// time select widget
 ?>

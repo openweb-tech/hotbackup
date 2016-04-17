@@ -32,15 +32,17 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
-  
   $settings = new JsonDB(__settingsdb);
-  
   $settings->data = $this->checkSettings($settings->data);
-  
   $header->data['title'] = $this->_LANG['settings']['Main settings'];
   
-  $this->data['settings'] = $settings->data;
+  $langs = glob(__corePath."lang/*.php");
   
+  foreach($langs as $key => $val)
+    $langs[$key] = str_replace('.php', '', str_replace(__corePath.'lang/', '', $val));
+  
+  $this->data['langs'] = $langs;
+  $this->data['settings'] = $settings->data;
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();

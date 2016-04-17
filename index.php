@@ -21,7 +21,9 @@ include __corePath.'libs/action.php';
 include __corePath.'libs/service.php';
 include __corePath.'libs/jsonDB.php';
 include __corePath.'app.php';
-include __corePath.'lang/en.php';
+
+$settingsDB = new JsonDB(__settingsdb);
+include __corePath.'lang/'.$settingsDB->data['lang'].'.php';
 
 /* load plugins */
 
