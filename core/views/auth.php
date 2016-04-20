@@ -20,4 +20,5 @@
         <div class="col-md-4"></div>
     </div>
 </div>
-<?php echo $footer ?>
+</body>
+</html>

@@ -16,7 +16,6 @@ class Page extends Controller
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
   $topMenu = new TopMenu($this->curpage, $this->db, $this->config);
   $topMenu->prepare();
-  
   $usersList = new JsonDB(__userdb);
   
   $header->data['title'] = 'Users list';
@@ -25,7 +24,6 @@ class Page extends Controller
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   $this->data['topMenu'] = $topMenu->show();
-  
   }
 
 

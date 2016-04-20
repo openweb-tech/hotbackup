@@ -7,7 +7,11 @@ class action extends actions
   
   $user = new User(1);
   
-  if( !$user->checkRights('administrator') ) return 0;
+  if( !$user->checkRights('manager') )
+    {
+    addNotification($this->_LANG['misc']["You don't have permissions"], 'warning');
+    return 0;
+    }
   
   $taskId = (int)$_POST['taskId'];
   $fileName = str_replace('/', '', $_POST['fileName']);

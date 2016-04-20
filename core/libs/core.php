@@ -33,4 +33,10 @@ if(isset($_POST['action']))
   }else{return 0;}
 }
 
+function addNotification($message, $type)
+{
+if(!isset($_SESSION['notifications']))
+  $_SESSION['notifications'] = array();
+$_SESSION['notifications'][] = array('message' => $message, 'type' => $type);
+}
 ?>

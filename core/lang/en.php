@@ -33,6 +33,8 @@ $_LANG['misc']['HDD usage'] = 'HDD usage';
 $_LANG['misc']['Used by BackUps (Mb)'] = 'Used by BackUps (Mb)';
 $_LANG['misc']['Hdd used by other (Mb)'] = 'Hdd used by other (Mb)';
 $_LANG['misc']['Hdd free space (Mb)'] = 'Hdd free space (Mb)';
+$_LANG['misc']["You don't have permissions"] = "You don't have permissions for this action.";
+
 // misc
 
 // actions

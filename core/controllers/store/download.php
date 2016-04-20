@@ -14,6 +14,12 @@ class Page extends Controller
   $serverId = '';
   if(isset($_GET['serverId'])) $serverId = (int)$_GET['serverId'];
   
+  if( !$user->checkRights('manager') )
+    {
+    addNotification($this->_LANG['misc']["You don't have permissions"], 'warning');
+    $this->redirect('?r=store/' . $folder . '/folder&fid=' . $taskId . '&sid=' . $serverId);
+    }
+  
   switch($folder)
     {
     case 'local':

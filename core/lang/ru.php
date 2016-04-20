@@ -13,10 +13,10 @@ $_LANG['menu']['logout'] = 'Выйти';
 // footer
 $_LANG['footer']['Powered by'] = 'Powered by';
 $_LANG['footer']['Powered by link'] = 'http://hotbackup.allwebstuff.info/';
-$_LANG['footer']['About'] = 'About';
-$_LANG['footer']['Documentation'] = 'Documentation';
+$_LANG['footer']['About'] = 'О программе';
+$_LANG['footer']['Documentation'] = 'Докуентация';
 $_LANG['footer']['Documentation link'] = 'http://hotbackup.allwebstuff.info/documentation/';
-$_LANG['footer']['Help'] = 'Help';
+$_LANG['footer']['Help'] = 'Помощь';
 $_LANG['footer']['Help link'] = 'http://hotbackup.allwebstuff.info/contacts/';
 // footer
 
@@ -33,6 +33,7 @@ $_LANG['misc']['HDD usage'] = 'Использование HDD';
 $_LANG['misc']['Used by BackUps (Mb)'] = 'Использовано для бэкапов (Mb)';
 $_LANG['misc']['Hdd used by other (Mb)'] = 'Другое (Mb)';
 $_LANG['misc']['Hdd free space (Mb)'] = 'Свободное место (Mb)';
+$_LANG['misc']["You don't have permissions"] = "У Вас недостаточно прав для этого действия.";
 // misc
 
 // actions

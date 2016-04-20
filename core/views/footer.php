@@ -1,5 +1,5 @@
-<footer class="footer sticky">
-  <div class="container">
+<div class="container">
+  <footer class="footer sticky">
     <div class="row">
       <div class="col-md-3">
         <ul>
@@ -25,7 +25,7 @@
         </ul>
       </div>    
     </div>
-  </div>
-</footer>
+  </footer>
+</div>
 </body>
 </html>
