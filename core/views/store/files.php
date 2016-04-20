@@ -19,6 +19,7 @@
     
   </div>
 </div>
+</div>
 <script>
 </script>
 <?php echo $footer ?>

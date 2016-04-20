@@ -1,3 +1,10 @@
+/* top nav */
+body > .container {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+/* top nav */
+
 .align-right
 {
 text-align: right;
@@ -107,3 +114,29 @@ z-index: 3;
 
 
 /* backupsGraph widget */
+
+/* footer */
+html, body
+{
+height: 100%;
+}
+.container
+{
+position: relative;
+z-index: 1;
+}
+.footer
+{
+z-index:2;
+margin-top: 60px;
+}
+.footer.sticky
+{
+position: absolute;
+padding-top:20px;
+height: 60px;
+width:100%;
+background: #f5f5f5;
+border-top: 1px solid #e7e7e7;
+}
+/* footer */

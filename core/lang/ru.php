@@ -12,6 +12,12 @@ $_LANG['menu']['logout'] = 'Выйти';
 
 // footer
 $_LANG['footer']['Powered by'] = 'Powered by';
+$_LANG['footer']['Powered by link'] = 'http://hotbackup.allwebstuff.info/';
+$_LANG['footer']['About'] = 'About';
+$_LANG['footer']['Documentation'] = 'Documentation';
+$_LANG['footer']['Documentation link'] = 'http://hotbackup.allwebstuff.info/documentation/';
+$_LANG['footer']['Help'] = 'Help';
+$_LANG['footer']['Help link'] = 'http://hotbackup.allwebstuff.info/contacts/';
 // footer
 
 // auth
