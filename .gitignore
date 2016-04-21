@@ -2,3 +2,4 @@ core/data/servers.json
 core/data/settings.json
 core/data/tasks.json
 core/data/users.json
+conf.php

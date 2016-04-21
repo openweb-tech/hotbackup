@@ -10,9 +10,9 @@ class Page extends Controller
   {
   $header = new PageHeader($this->curpage, $this->db, $this->config);
   $footer = new PageFooter($this->curpage, $this->db, $this->config);
-  $header->data['title'] = 'OpenBackup installation';
+  $header->data['title'] = 'HotBackup installation';
 
-  $this->data['title'] = 'OpenBackup installation';
+  $this->data['title'] = 'HotBackup installation';
   $this->data['header'] = $header->show();
   $this->data['footer'] = $footer->show();
   
@@ -29,7 +29,7 @@ class Page extends Controller
     $formSent = $_SESSION['formSent'];
   else
     {
-    $formSent['login'] = 'OpenAdmin';
+    $formSent['login'] = 'hAdmin';
     $formSent['password'] = '';
     $formSent['confirmation'] = '';
     $formSent['email'] = '';

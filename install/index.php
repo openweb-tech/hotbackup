@@ -19,6 +19,34 @@ include __corePath.'libs/jsonDB.php';
 include __corePath.'app.php';
 include __corePath.'lang/en.php';
 
+function beforeInstall()
+{
+$res = 0;
+if(!file_exists(__workfolder . 'conf.php'))
+  {
+  $res = 1;
+  addNotification('conf.php not found. Please rename install_conf.php to conf.php', 'danger');
+  } else {
+  if(!is_writable(__workfolder . 'conf.php'))
+    {
+    $res = 1;
+    addNotification('conf.php is not writable.', 'danger');
+    }
+  }
+if(!is_writable(__archiveDIR))
+  {
+  $res = 1;
+  addNotification('"archive" folder is not writable.', 'danger');
+  }
+if(!is_writable(__corePath . 'data'))
+  {
+  $res = 1;
+  addNotification('"core/data" folder is not writable.', 'danger');
+  }
+
+return $res;
+}
+
 function getInstallActions()
 {
 if(!isset($_POST['action'])) return 0;
@@ -40,7 +68,12 @@ if($action)
 
 $route = getroute();
 
-$curpage = 'controller/'.$route;
+if(beforeInstall())
+  {
+  $curpage = 'controller/beforeInstall';
+  } else {
+  $curpage = 'controller/'.$route;
+  }
 
 include "$curpage.php";
 

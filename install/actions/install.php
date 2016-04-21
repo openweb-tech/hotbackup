@@ -52,10 +52,20 @@ class action extends actions
     
     unset($_SESSION['formSent']);
     
+    // check settings db
+    $settingsDB = new JsonDB('../core/data/settings.json');
+    if(!isset($settingsDB->data['shortName']))
+      { // db have not created, have to create clean
+      $settingsDB->data['serverName'] = 'My new Backup server';
+      $settingsDB->data['shortName'] = 'BCKP';
+      $settingsDB->data['apiKey'] = md5(rand());
+      $settingsDB->data['lang'] = 'en';
+      $settingsDB->saveToFile('../core/data/settings.json');
+      }
+    
     //-- check installation
     
     // check usersDB
-    $afretInstallError = 0;
     
     $usersDB = new JsonDB('../core/data/users.json');
     if( count($usersDB->data) == 0 )
@@ -70,7 +80,7 @@ class action extends actions
     $_SESSION['formSent'] = $_POST;
     
     if( $beforeInstallError )
-      $_SESSION['error'] = 'Please check write permissions foe work folder.';
+      $_SESSION['error'] = 'Please check write permissions for work folder.';
     else
       $_SESSION['error'] = 'Please check the installation form!';
     
