@@ -17,7 +17,12 @@ class ApiQuery
   $params = array('action' => 'serverinfo');
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  return json_decode(file_get_contents($query), $returnarray);
+  
+  $res = file_get_contents($query);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function deleteTask($id, $returnarray = false)
@@ -26,8 +31,10 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
   $res = file_get_contents($query);
-  echo $res;
-  return json_decode($res, $returnarray);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function updateTask($task, $id, $returnarray = false)
@@ -36,7 +43,10 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
   $res = file_get_contents($query);
-  return json_decode($res, $returnarray);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function addTask($task, $returnarray = false)
@@ -45,7 +55,10 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
   $res = file_get_contents($query);
-  return json_decode($res, $returnarray);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function getTasksList($returnarray = false)
@@ -54,7 +67,11 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   
   $query = $this->getQuery($params);
-  return json_decode(file_get_contents($query), $returnarray);
+  $res = file_get_contents($query);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function getTasksFiles($returnarray = false)
@@ -63,7 +80,11 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   
   $query = $this->getQuery($params);
-  return json_decode(file_get_contents($query), $returnarray);
+  $res = file_get_contents($query);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function downloadFile($taskId, $fileName)
@@ -72,7 +93,11 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   
   $query = $this->getQuery($params);
-  return file_get_contents($query);
+  $res = file_get_contents($query);
+  if($res)
+    return json_decode($res, $returnarray);
+  else
+    return array('responseStatus' => 'error');  
   }
   
   function getQuery($params)
