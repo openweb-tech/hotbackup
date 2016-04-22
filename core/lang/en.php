@@ -157,6 +157,7 @@ $_LANG['servers']['(files)'] = '(files)';
 $_LANG['ts_widget']['Start'] = 'Start';
 $_LANG['ts_widget']['Every n minutes'] = 'Every n minutes';
 $_LANG['ts_widget']['Every hour'] = 'Every hour';
+$_LANG['ts_widget']['Every day'] = 'Every day';
 $_LANG['ts_widget']['Every Month'] = 'Every Month';
 $_LANG['ts_widget']['Once'] = 'Once';
 $_LANG['ts_widget']['Month'] = 'Month';

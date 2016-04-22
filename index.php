@@ -6,9 +6,7 @@ ini_set('display_startup_errors', 1);
 
 include 'conf.php';
 
-if(!defined('__corePath'))
-  die('Bad installation');
-if(__corePath == '{basePath}core/')
+if( (!defined('__corePath')) || (__corePath == '{basePath}core/') )
   {
   header('location: ' . str_replace('index.php', '', $_SERVER['PHP_SELF']) . 'install/');
   die();

@@ -2,8 +2,8 @@
       <label><?php echo $_LANG['ts_widget']['Start'] ?></label>
       <select class="form-control" name="n-start">
         <option value="n-minutes"><?php echo $_LANG['ts_widget']['Every n minutes'] ?></option>
-        <option value="n-every-hour">Every hour</option>
-        <option value="n-day"><?php echo $_LANG['ts_widget']['Every hour'] ?></option>
+        <option value="n-every-hour"><?php echo $_LANG['ts_widget']['Every hour'] ?></option>
+        <option value="n-day"><?php echo $_LANG['ts_widget']['Every day'] ?></option>
         <option value="n-month"><?php echo $_LANG['ts_widget']['Every Month'] ?></option>
         <option value="n-once"><?php echo $_LANG['ts_widget']['Once'] ?></option>
       </select>

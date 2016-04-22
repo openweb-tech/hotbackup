@@ -11,7 +11,7 @@ class Actions
 
   public function redirect($path)
   {
-  header('location: '.__spath.$path);
+  header('location: '.__siteurl.$path);
   die();
   }
   

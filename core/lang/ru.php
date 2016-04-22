@@ -156,6 +156,7 @@ $_LANG['servers']['(files)'] = '(файлы)';
 $_LANG['ts_widget']['Start'] = 'Выполнять';
 $_LANG['ts_widget']['Every n minutes'] = 'Каждые N минут';
 $_LANG['ts_widget']['Every hour'] = 'Каждый час';
+$_LANG['ts_widget']['Every day'] = 'Каждый день';
 $_LANG['ts_widget']['Every Month'] = 'Каждый месяц';
 $_LANG['ts_widget']['Once'] = 'Единожды';
 $_LANG['ts_widget']['Month'] = 'Месяц';
