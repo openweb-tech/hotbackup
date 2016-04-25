@@ -275,6 +275,8 @@ $zip->open($fileName, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 $exclude = explode("\n", $task['file-exclude']);
 if(!$exclude[0]) $exclude = array();
 
+$exclude[] = __workfolder;
+
 if(is_file($target))// Archiving only 1 file
   {
   $zip->addFile($target, basename($target));

@@ -20,14 +20,14 @@ foreach($serversList->data as $key => $server)
     {
     $query = new ApiQuery($server['address'], $server['apiKey']);
     
-    $info = $query->getServerInfo();
+    $info = $query->getServerInfo(true);
     
-    if($info->responseStatus != 'Unathorized')
+    if($info['responseStatus'] == 'ok')
       {
-      $serversList->data[$key]['name'] = $info->serverName;
-      $serversList->data[$key]['tasksCount'] = $info->tasksCount;
-      $serversList->data[$key]['tasks'] = $info->tasks;
-      $serversList->data[$key]['freeSpace'] = $info->freeSpace;
+      $serversList->data[$key]['name'] = $info['serverName'];
+      $serversList->data[$key]['tasksCount'] = $info['tasksCount'];
+      $serversList->data[$key]['tasks'] = $info['tasks'];
+      $serversList->data[$key]['freeSpace'] = $info['freeSpace'];
       $serversList->data[$key]['lastCheck'] = time();
       $serversList->data[$key]['status'] = 1;
       
@@ -71,7 +71,7 @@ foreach($serversList->data as $key => $server)
 
       }else
       {
-      echo 'Unathorized!';
+      echo "\n status = " . $info['responseStatus'] . "\n";
       $serversList->data[$key]['lastCheck'] = time();
       $serversList->data[$key]['status'] = 3;
       }

@@ -6,10 +6,18 @@ class ApiQuery
   private $token;
   
   
-  function __construct($host, $token) 
+  function __construct($host, $token, $timeout = 5) 
   {
   $this->httpPath = $host.'/api.php';
   $this->token = $token;
+  
+  $this->ctx = stream_context_create(array(
+      'http' => array(
+        'timeout' => $timeout
+        )
+      )
+    ); 
+  
   }
   
   function getServerInfo($returnarray = false)
@@ -17,9 +25,8 @@ class ApiQuery
   $params = array('action' => 'serverinfo');
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  
-  $res = file_get_contents($query);
-  if($res)
+  $res = file_get_contents($query, 0, $this->ctx);
+  if($res != '')
     return json_decode($res, $returnarray);
   else
     return array('responseStatus' => 'error');  
@@ -30,7 +37,7 @@ class ApiQuery
   $params = array('action' => 'deleteTask', 'id' => $id);
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
+  $res = file_get_contents($query, 0, $this->ctx);
   if($res)
     return json_decode($res, $returnarray);
   else
@@ -42,7 +49,7 @@ class ApiQuery
   $params = array('action' => 'updateTask', 'task' => base64_encode(json_encode($task)), 'id' => $id);
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
+  $res = file_get_contents($query, 0, $this->ctx);
   if($res)
     return json_decode($res, $returnarray);
   else
@@ -54,7 +61,7 @@ class ApiQuery
   $params = array('action' => 'addTask', 'task' => base64_encode(json_encode($task)));
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
+  $res = file_get_contents($query, 0, $this->ctx);
   if($res)
     return json_decode($res, $returnarray);
   else
@@ -67,7 +74,7 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
+  $res = file_get_contents($query, 0, $this->ctx);
   if($res)
     return json_decode($res, $returnarray);
   else
@@ -80,7 +87,7 @@ class ApiQuery
   $params['token'] = $this->genToken($params, $this->token);
   
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
+  $res = file_get_contents($query, 0, $this->ctx);
   if($res)
     return json_decode($res, $returnarray);
   else
@@ -91,13 +98,8 @@ class ApiQuery
   {
   $params = array('action' => 'downloadfile', 'taskId' => $taskId, 'fileName' => $fileName);
   $params['token'] = $this->genToken($params, $this->token);
-  
   $query = $this->getQuery($params);
-  $res = file_get_contents($query);
-  if($res)
-    return json_decode($res, $returnarray);
-  else
-    return array('responseStatus' => 'error');  
+  return file_get_contents($query, 0, $this->ctx); 
   }
   
   function getQuery($params)
