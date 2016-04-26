@@ -19,14 +19,18 @@ class TopMenu extends Controller
   
   if($route == '')
     $mainToggle = 'active';
-  if(($route == 'tasks') || (strpos('##'.$route, 'tasks/')))
-    $tasksToggle = 'active';
-  if(($route == 'users') || (strpos('##'.$route, 'users/')))
-    $usersToggle = 'active';
+    
   if(($route == 'servers') || (strpos('##'.$route, 'servers/')))
     $serversToggle = 'active';
+  elseif(($route == 'tasks') || (strpos('##'.$route, 'tasks/')))
+    $tasksToggle = 'active';
+    
+  if(($route == 'users') || (strpos('##'.$route, 'users/')))
+    $usersToggle = 'active';
+    
   if(($route == 'store') || (strpos('##'.$route, 'store/')))
     $storeToggle = 'active';
+    
   if(($route == 'settings') || (strpos('##'.$route, 'settings/')))
     $settingsToggle = 'active';
   
