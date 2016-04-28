@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-md-3">
         <ul>
-          <li><a href="#"><?php echo $_LANG['footer']['About'] ?></a></li>
+          <li><a href="<?php echo __siteurl ?>/?r=about"><?php echo $_LANG['footer']['About'] ?></a></li>
         </ul>
       </div>
       

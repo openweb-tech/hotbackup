@@ -14,7 +14,7 @@ $_LANG['menu']['logout'] = 'Выйти';
 $_LANG['footer']['Powered by'] = 'Powered by';
 $_LANG['footer']['Powered by link'] = 'http://hotbackup.allwebstuff.info/';
 $_LANG['footer']['About'] = 'О программе';
-$_LANG['footer']['Documentation'] = 'Докуентация';
+$_LANG['footer']['Documentation'] = 'Документация';
 $_LANG['footer']['Documentation link'] = 'http://hotbackup.allwebstuff.info/documentation/';
 $_LANG['footer']['Help'] = 'Помощь';
 $_LANG['footer']['Help link'] = 'http://hotbackup.allwebstuff.info/contacts/';
@@ -165,5 +165,12 @@ $_LANG['ts_widget']['Year'] = 'Год';
 $_LANG['ts_widget']['Hour'] = 'Час';
 $_LANG['ts_widget']['Minutes'] = 'Минута';
 // time select widget
+
+// static pages
+$_LANG['about']['title'] = 'О программе';
+$_LANG['about']['1stparagraph'] = 'HotBackup - автоматизированная система резервного копирования.';
+$_LANG['about']['2stparagraph'] = 'HotBackup это свободное програмное обеспечение, распространяемое по лицензии GNU GPL v 3.0. ';
+$_LANG['about']['3stparagraph'] = 'Веб-сайт проекта: <a href="http://hotbackup.allwebstuff.info/" target="_blank">http://hotbackup.allwebstuff.info/</a>';
+$_LANG['about']['4stparagraph'] = 'Гитхаб репозиторий: <a href="https://github.com/openweb-tech/hotbackup" target="_blank">https://github.com/openweb-tech/hotbackup</a>';
 
 ?>

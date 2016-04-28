@@ -27,6 +27,7 @@ foreach($tasksList->data as $key=>$task)
   echo "NextExec = ".date('d.m.Y h:i', $nextExec)."\n";
   
   if((time() >= $nextExec) && ($nextExec > 0) )
+    {
     switch($task['type'])
       {
       case 'files_backup':
@@ -43,7 +44,12 @@ foreach($tasksList->data as $key=>$task)
           }
         echo "$res \n";
         if($res == 'Ok')
+          {
           $tasksList->data[$key]['lastExec'] = time();
+          // if task have to execute only once
+          if( $tasksList->data[$key]['frequency']['type'] == 'n-once' )
+            $tasksList->data[$key]['status'] = 0;// disable the task
+          }
       break;
       
       case 'mysql_backup':
@@ -60,9 +66,15 @@ foreach($tasksList->data as $key=>$task)
           }
         echo "$res \n";
         if($res == 'Ok')
+          {
           $tasksList->data[$key]['lastExec'] = time();
+          // if task have to execute only once
+          if( $tasksList->data[$key]['frequency']['type'] == 'n-once' )
+            $tasksList->data[$key]['status'] = 0;// disable the task
+          }
       break;
       }
+    }
   }
 
 $tasksList->saveToFile(__taskdb);

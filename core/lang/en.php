@@ -166,4 +166,12 @@ $_LANG['ts_widget']['Year'] = 'Year';
 $_LANG['ts_widget']['Hour'] = 'Hour';
 $_LANG['ts_widget']['Minutes'] = 'Minutes';
 // time select widget
+
+// static pages
+$_LANG['about']['title'] = 'about';
+$_LANG['about']['1stparagraph'] = 'HotBackup is automatica backup system.';
+$_LANG['about']['2stparagraph'] = 'HotBackup is free software, is distributed under GNU GPL v 3.0. ';
+$_LANG['about']['3stparagraph'] = 'Project website: <a href="http://hotbackup.allwebstuff.info/" target="_blank">http://hotbackup.allwebstuff.info/</a>';
+$_LANG['about']['4stparagraph'] = 'GitHub repository: <a href="https://github.com/openweb-tech/hotbackup" target="_blank">https://github.com/openweb-tech/hotbackup</a>';
+
 ?>
