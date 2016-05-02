@@ -70,11 +70,13 @@ class action extends actions
     $usersDB = new JsonDB('../core/data/users.json');
     if( count($usersDB->data) == 0 )
       {
-      $this->redirect('?r=error');
       $_SESSION['error'] = 'Unable to access to users db, please check permissions to the /core/data folder.';
+      header('location: '.$_SERVER['REQUEST_URI'].'?r=error');
+      die();
       }
     //--
-    $this->redirect('?r=success');
+      header('location: '.$_SERVER['REQUEST_URI'].'?r=success');
+      die();
     } else {
     
     $_SESSION['formSent'] = $_POST;
@@ -83,9 +85,8 @@ class action extends actions
       $_SESSION['error'] = 'Please check write permissions for work folder.';
     else
       $_SESSION['error'] = 'Please check the installation form!';
-    
-    $this->redirect('');
-    
+    header('location: '.$_SERVER['REQUEST_URI']);
+    die();
     }
   }
 }

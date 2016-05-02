@@ -13,8 +13,8 @@
       <span class="">Warning!</span> Next, you need to add backend tasks to the cron service:
     </div>
     <ul>
-      <li>* * * * * <?php echo $serversServiceCron ?></li>
-      <li>*/5 * * * * <?php echo $tasksServiceCron ?></li>
+      <li>* * * * * php <?php echo $serversServiceCron ?></li>
+      <li>*/5 * * * * php <?php echo $tasksServiceCron ?></li>
     </ul>
     <br />
     <br />
