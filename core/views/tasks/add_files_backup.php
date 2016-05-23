@@ -48,7 +48,10 @@
     <div class="taskTypes" id="MYSQL-backup" >
       <fieldset class="form-group">
         <label><?php echo $_LANG['tasks']['Folder/file name'] ?></label>
-        <input type="text" name="file-filename" class="form-control">
+        <div class="input-group">
+          <input type="text" name="file-filename" class="form-control">
+          <span class="input-group-addon btn" id="basic-addon2" data-toggle="modal" data-target="#filesManModal">Open...</span>
+        </div>
       </fieldset>
       <fieldset class="form-group">
         <label><?php echo $_LANG['tasks']['Exclude files/folders'] ?></label>
@@ -63,7 +66,31 @@
 </form>
 <!-- actions menu -->
 </div>
-<script>
 
+<!-- filemon modal -->
+<!-- Modal -->
+<div class="modal fade" id="filesManModal" tabindex="-1" role="dialog" aria-labelledby="fileManModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="filesManModalLabel">File manager</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary disabled" id="fileManSubmit">Ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- filemon modal -->
+<script src="<?php echo __siteurl ?>/js/filesman.js"></script>
+<script>
+$('#filesManModal').on('show.bs.modal', function(e) {
+  var fm = new filesMan('#filesManModal', {});
+});  
 </script>
 <?php echo $footer ?>

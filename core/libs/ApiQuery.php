@@ -94,12 +94,19 @@ class ApiQuery
     return array('responseStatus' => 'error');  
   }
   
-  function downloadFile($taskId, $fileName)
+  function downloadFile($taskId, $fileName, $saveName)
   {
   $params = array('action' => 'downloadfile', 'taskId' => $taskId, 'fileName' => $fileName);
   $params['token'] = $this->genToken($params, $this->token);
   $query = $this->getQuery($params);
-  return file_get_contents($query, 0, $this->ctx); 
+  
+  $fp = fopen($saveName, 'w');
+  $ch = curl_init($query);
+  curl_setopt($ch, CURLOPT_FILE, $fp);
+  $data = curl_exec($ch);
+  curl_close($ch);
+  fclose($fp);
+  return true;
   }
   
   function getQuery($params)

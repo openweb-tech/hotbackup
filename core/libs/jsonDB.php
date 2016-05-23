@@ -40,9 +40,12 @@ private $dbfile = '';
   public function selectBy($selector, $value)
   {
 
-  foreach($this->data as $key=>$val)
+  foreach($this->data as $key => $val)
     if( $val[$selector] == $value )
+      {
+      $val['_id'] = $key;
       return $val;
+      }
   
   return array();
   }

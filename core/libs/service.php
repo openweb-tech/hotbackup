@@ -67,6 +67,7 @@ if(!is_dir(__archiveDIR.'local/'.$task['id']))
 return __archiveDIR.'local/'.$task['id'];
 }
 
+//--------------------------------------------------
 function getServersTaskFolder($serverid, $taskId)
 {
 if(!is_dir(__archiveDIR.'servers/'.$serverid))
@@ -81,6 +82,7 @@ if(!is_dir(__archiveDIR.'servers/'.$serverid.'/'.$taskId))
 return __archiveDIR.'servers/'.$serverid.'/'.$taskId;
 }
 
+//--------------------------------------------------
 function getServerFolder($task)
 {
 if(!is_dir(__archiveDIR.'servers/'.$task['id']))
@@ -141,6 +143,7 @@ if($size > (1024*1024*1024*1024))
 return $ret;
 }
 
+//--------------------------------------------------
 function checkFile($folder, $files, $file)
 {
 $fname = str_replace($folder, '', $file);
@@ -173,6 +176,7 @@ return is_file($path) ?
   @unlink($path) :
   array_map(__FUNCTION__, glob($path.'/*')) == @rmdir($path);
 }
+
 //--------------------------------------------------
 function delOldFiles($folder, $deep)
 {

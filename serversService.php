@@ -60,9 +60,7 @@ foreach($serversList->data as $key => $server)
             if(!checkArchFile($folder, $file))// download file
               {
               echo "> file = ".$file['name']." \n";
-              $fileData = $query->downloadFile($taskId, $file['name']);
-              if($fileData)
-                file_put_contents($folder.'/'.$file['name'], $fileData);
+              $query->downloadFile($taskId, $file['name'], $folder.'/'.$file['name']);
               }
           delOldFiles($folder, $server['archDepth']);
           }     

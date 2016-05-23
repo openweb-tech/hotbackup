@@ -104,8 +104,12 @@ class ApiResponse
   function downloadFile($task, $fileName)
   {
   if(file_exists(__archiveDIR.'local/'.$task.'/'.$fileName))
-    return file_get_contents(__archiveDIR.'local/'.$task.'/'.$fileName);
-  return '';
+    {
+    readfile(__archiveDIR.'local/'.$task.'/'.$fileName);
+    die();    
+    } else {
+    return '';
+    }
   }
   
   
